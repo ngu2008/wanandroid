@@ -1,0 +1,53 @@
+name: wanandroid_ngu
+description: A new Flutter application.
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# Read more about versioning at semver.org.
+version: 1.0.2+2
+
+environment:
+  sdk: ">=2.0.0-dev.68.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^0.1.2
+  flutter_swiper: ^1.1.4
+  flutter_webview_plugin: ^0.3.0+2
+  dio: ^1.0.13
+  shared_preferences: ^0.4.3
+  fluttertoast: ^2.2.6
+  event_bus: ^1.0.1
+  flutter_slidable: ^0.4.9
+  # 汉字转拼音库 https://github.com/flutterchina/lpinyin
+  lpinyin: ^1.0.7
+  # Dart 常用工具类库 https://github.com/Sky24n/common_utils
+  common_utils: ^1.0.9
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+# For information on the generic Dart part of this file, see the
+# following page: https://www.dartlang.org/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  assets:
+
+  #加载页面图片资源
+  - images/loading.jpeg
