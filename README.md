@@ -1,6 +1,6 @@
 # wanandroid_ngu
 
-A new Flutter application.
+玩Android-Flutter练手项目.
 
 ## Getting Started
 
