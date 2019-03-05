@@ -50,4 +50,4 @@ flutter:
   assets:
 
   #加载页面图片资源
-  - images/loading.jpeg
+  - images/loading.jpg

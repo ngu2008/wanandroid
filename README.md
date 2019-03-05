@@ -11,14 +11,28 @@
 ## 下载
 - 扫描二维码下载
 
+  ![](screenshot/a7.png)
 
-This project is a starting point for a Flutter application.
+- 暂不支持IOS版本下载，请自行clone项目代码运行。
 
-A few resources to get you started if this is your first Flutter project:
+## 项目截图
 
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
+| ![](screenshot/a1.jpg) | ![](screenshot/a2.jpg) | ![](screenshot/a3.jpg) |
+| ![](screenshot/a4.jpg) | ![](screenshot/a5.jpg) | ![](screenshot/a6.jpg) |
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+
+## 感谢
+
+1. 特别感谢github开源作者[shijiacheng](https://github.com/shijiacheng/wanandroid_flutter)
+2. 感谢鸿洋大神及[玩Android官网](http://www.wanandroid.com/)提供的[开放API](http://www.wanandroid.com/blog/show/2)。
+
+
+## 使用开源库
+
+- [flutter_swiper](https://pub.flutter-io.cn/packages/flutter_swiper)
+
+- [cupertino_icons](https://pub.flutter-io.cn/packages/cupertino_icons)
+
+- [flutter_webview_plugin](https://pub.flutter-io.cn/packages/flutter_webview_plugin)
+
+- [dio](https://pub.flutter-io.cn/packages/dio)
