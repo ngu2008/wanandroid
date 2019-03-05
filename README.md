@@ -1,8 +1,16 @@
-# wanandroid_ngu
+## 前言
 
-玩Android-Flutter练手项目.
+- 这是一款使用Flutter写的WanAndroid客户端应用，在Android和IOS都完美运行
+- 可以用来入门Flutter，简单明了，适合初学者
+- [项目完全开源](https://github.com/ngu2008/wanandroid_ngu)，欢迎Star&Fork，有问题请提交Issues
 
-## Getting Started
+## 功能介绍
+
+- 项目首页、知识体系、公众号、导航、项目、各个页面，和详情页面，只做了wanandroid平台的部分功能，目的是让初学者能够快速入门
+
+## 下载
+- 扫描二维码下载
+
 
 This project is a starting point for a Flutter application.
 
