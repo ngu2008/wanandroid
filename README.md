@@ -17,8 +17,7 @@
 
 ## 项目截图
 
-| ![](screenshot/a1.jpg) | ![](screenshot/a2.jpg) | ![](screenshot/a3.jpg) |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+ ![](screenshot/a1.jpg) ![](screenshot/a2.jpg)  ![](screenshot/a3.jpg) 
 | ![](screenshot/a4.jpg) | ![](screenshot/a5.jpg) | ![](screenshot/a6.jpg) |
 
 
