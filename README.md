@@ -12,6 +12,10 @@
 ## 功能介绍
 
 - 项目首页、知识体系、公众号、导航、项目、各个页面，和详情页面，只做了wanandroid平台的部分功能，目的是让初学者能够快速入门
+- 主要的UI包括首页轮播图和列表，体系流式布局，公众号导航TabBar,以及下拉刷新和加载更多。
+- 轮播图使用的是开源库[flutter_swiper](https://github.com/best-flutter/flutter_swiper)
+- 网络请求使用的是开源库[dio](https://github.com/flutterchina/dio)
+
 
 ## 下载
 - Android扫描二维码下载
