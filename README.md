@@ -17,8 +17,8 @@
 
 ## 项目截图
 
-|![](screenshot/a1.jpg) {:width="150px"} | ![](screenshot/a2.jpg){:width="150px"} | ![](screenshot/a3.jpg) {:width="150px"}
-| ![](screenshot/a4.jpg){:width="150px"} | ![](screenshot/a5.jpg){:width="150px"} | ![](screenshot/a6.jpg){:width="150px"}
+![](screenshot/a1.jpg) {:width="150px"} ![](screenshot/a2.jpg){:width="150px"}  ![](screenshot/a3.jpg) {:width="150px"}
+![](screenshot/a4.jpg){:width="150px"}  ![](screenshot/a5.jpg){:width="150px"} ![](screenshot/a6.jpg){:width="150px"}
 
 
 
