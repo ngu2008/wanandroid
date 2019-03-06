@@ -17,10 +17,9 @@
 
 ## 项目截图
 
-![](screenshot/a1.jpg) {:width="150px"} ![](screenshot/a2.jpg){:width="150px"}  ![](screenshot/a3.jpg) {:width="150px"}
-![](screenshot/a4.jpg){:width="150px"}  ![](screenshot/a5.jpg){:width="150px"} ![](screenshot/a6.jpg){:width="150px"}
+<img src="/screenshot/a1.jpg" width="400"> <img src="/screenshot/a2.jpg" width="400"> <img src="/screenshot/a3.jpg" width="400">
+<img src="/screenshot/a4.jpg" width="400"> <img src="/screenshot/a5.jpg" width="400"> <img src="/screenshot/a6.jpg" width="400">
 
-<img src="/screenshot/a1.jpg" width="250">
 
 ## 感谢
 
