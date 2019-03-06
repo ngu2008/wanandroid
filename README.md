@@ -4,6 +4,11 @@
 - 可以用来入门Flutter，简单明了，适合初学者
 - [项目完全开源](https://github.com/ngu2008/wanandroid_ngu)，欢迎Star&Fork，有问题请提交Issues
 
+## 环境搭建
+
+- 根据[Flutter中文网](https://flutterchina.club/get-started/install)搭建开发环境，使用Android Studio安装Flutter插件，点击pubspec.yaml的package get，然后运行
+
+
 ## 功能介绍
 
 - 项目首页、知识体系、公众号、导航、项目、各个页面，和详情页面，只做了wanandroid平台的部分功能，目的是让初学者能够快速入门
