@@ -20,7 +20,6 @@ class AppState extends State<App> {
   final appBarTitles = ['首页', '体系', '公众号', '导航', "项目"];
 
   bool _showAppbar = true;
-  bool _showDrawer = true;
 
   var pages = <Widget>[
     HomePage(),
@@ -63,17 +62,10 @@ class AppState extends State<App> {
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
-
       if (_selectedIndex == 0 || _selectedIndex == 1 || _selectedIndex == 3) {
         _showAppbar = true;
       } else {
         _showAppbar = false;
-      }
-
-      if (_selectedIndex == 0) {
-        _showDrawer = true;
-      } else {
-        _showDrawer = false;
       }
     });
   }

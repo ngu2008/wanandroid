@@ -30,6 +30,7 @@ class HomePageState extends State<HomePage>with AutomaticKeepAliveClientMixin{
     });
   }
 
+
   //获取文章列表数据
   Future<Null> getData() async {
     _page = 0;

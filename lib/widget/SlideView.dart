@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wanandroid_ngu/ArticleDetailPage.dart';
+import 'package:wanandroid_ngu/article_detail_page.dart';
 
 class SlideView extends StatefulWidget {
   var data;
