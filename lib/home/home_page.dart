@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wanandroid_ngu/home/banner.dart';
 import 'package:wanandroid_ngu/http/common_service.dart';
-import 'package:wanandroid_ngu/model/ArticleModel.dart';
+import 'package:wanandroid_ngu/model/article_model.dart';
 import 'package:wanandroid_ngu/public_ui/webview_page.dart';
 
 class HomePage extends StatefulWidget {

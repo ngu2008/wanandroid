@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:wanandroid_ngu/http/common_service.dart';
 import 'package:wanandroid_ngu/public_ui/webview_page.dart';
-import '../model/BannerModel.dart';
+import '../model/banner_model.dart';
 
 class BannerWidget extends StatefulWidget {
   @override

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wanandroid_ngu/http/common_service.dart';
-import 'package:wanandroid_ngu/model/WxArticleContentModel.dart';
-import 'package:wanandroid_ngu/model/WxArticleTitleModel.dart';
+import 'package:wanandroid_ngu/model/wx_article_content_model.dart';
+import 'package:wanandroid_ngu/model/wx_article_title_model.dart';
 import 'package:wanandroid_ngu/public_ui/webview_page.dart';
 
 class PubliccPage extends StatefulWidget {

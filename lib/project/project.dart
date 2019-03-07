@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wanandroid_ngu/http/common_service.dart';
-import 'package:wanandroid_ngu/model/ProjectListModel.dart';
-import 'package:wanandroid_ngu/model/ProjectTreeModel.dart';
+import 'package:wanandroid_ngu/model/projectlist_model.dart';
+import 'package:wanandroid_ngu/model/project_tree_model.dart';
 import 'package:wanandroid_ngu/public_ui/webview_page.dart';
 
 class ProjectPage extends StatefulWidget {

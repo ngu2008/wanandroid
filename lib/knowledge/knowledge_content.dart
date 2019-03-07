@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wanandroid_ngu/http/common_service.dart';
-import 'package:wanandroid_ngu/model/SystemTreeContentModel.dart';
-import 'package:wanandroid_ngu/model/SystemTreeModel.dart';
+import 'package:wanandroid_ngu/model/system_tree_content_model.dart';
+import 'package:wanandroid_ngu/model/system_tree_model.dart';
 import 'package:wanandroid_ngu/public_ui/webview_page.dart';
 
 class KnowledgeContentPage extends StatefulWidget {

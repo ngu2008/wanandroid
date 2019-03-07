@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wanandroid_ngu/http/common_service.dart';
-import 'package:wanandroid_ngu/model/NaviModel.dart';
+import 'package:wanandroid_ngu/model/navi_model.dart';
 import 'package:wanandroid_ngu/public_ui/webview_page.dart';
 import 'package:wanandroid_ngu/util/utils.dart';
 

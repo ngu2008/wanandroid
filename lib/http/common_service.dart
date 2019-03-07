@@ -1,23 +1,23 @@
 import 'package:dio/dio.dart';
-import 'package:wanandroid_ngu/common/User.dart';
+import 'package:wanandroid_ngu/common/user.dart';
 import 'package:wanandroid_ngu/http/dio_manager.dart';
-import 'package:wanandroid_ngu/model/ArticleModel.dart';
-import 'package:wanandroid_ngu/model/BannerModel.dart';
-import 'package:wanandroid_ngu/model/BaseModel.dart';
-import 'package:wanandroid_ngu/model/CollectionModel.dart';
-import 'package:wanandroid_ngu/model/HotWordModel.dart';
-import 'package:wanandroid_ngu/model/NaviModel.dart';
-import 'package:wanandroid_ngu/model/ProjectListModel.dart';
-import 'package:wanandroid_ngu/model/ProjectTreeModel.dart';
-import 'package:wanandroid_ngu/model/SystemTreeContentModel.dart';
-import 'package:wanandroid_ngu/model/SystemTreeModel.dart';
-import 'package:wanandroid_ngu/model/TodoListModel.dart';
-import 'package:wanandroid_ngu/model/UserModel.dart';
-import 'package:wanandroid_ngu/model/WebsiteCollectionModel.dart';
-import 'package:wanandroid_ngu/model/WxArticleContentModel.dart';
-import 'package:wanandroid_ngu/model/WxArticleTitleModel.dart';
+import 'package:wanandroid_ngu/model/article_model.dart';
+import 'package:wanandroid_ngu/model/banner_model.dart';
+import 'package:wanandroid_ngu/model/base_model.dart';
+import 'package:wanandroid_ngu/model/collection_model.dart';
+import 'package:wanandroid_ngu/model/hotword_model.dart';
+import 'package:wanandroid_ngu/model/navi_model.dart';
+import 'package:wanandroid_ngu/model/projectlist_model.dart';
+import 'package:wanandroid_ngu/model/project_tree_model.dart';
+import 'package:wanandroid_ngu/model/system_tree_content_model.dart';
+import 'package:wanandroid_ngu/model/system_tree_model.dart';
+import 'package:wanandroid_ngu/model/todolist_model.dart';
+import 'package:wanandroid_ngu/model/user_model.dart';
+import 'package:wanandroid_ngu/model/website_collection_model.dart';
+import 'package:wanandroid_ngu/model/wx_article_content_model.dart';
+import 'package:wanandroid_ngu/model/wx_article_title_model.dart';
 
-import 'Api.dart';
+import 'api.dart';
 
 class CommonService{
   void getBanner(Function callback) async {
