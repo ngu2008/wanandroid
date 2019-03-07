@@ -11,9 +11,6 @@ class Utils {
     return PinyinHelper.getShortPinyin(str).substring(0, 1).toUpperCase();
   }
 
-
-
-
   static Color getChipBgColor(String name) {
     String pinyin = PinyinHelper.getFirstWordPinyin(name);
     pinyin = pinyin.substring(0, 1).toUpperCase();
