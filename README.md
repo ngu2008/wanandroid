@@ -1,4 +1,4 @@
-## Flutter学习资源汇总持续更新中
+## Flutter学习资源汇总持续更新中......
 
 - [Flutter中文网](https://flutterchina.club/)
 - wendux的[Flutter实战](https://book.flutterchina.club/)
