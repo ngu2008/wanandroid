@@ -16,6 +16,7 @@ class HomePageState extends State<HomePage>with AutomaticKeepAliveClientMixin{
   List<Article> _datas = new List();
   //listview控制器
   ScrollController _scrollController = ScrollController();
+  bool showToTopBtn = false; //是否显示“返回到顶部”按钮
   int _page = 0;
 
   @override
@@ -27,6 +28,18 @@ class HomePageState extends State<HomePage>with AutomaticKeepAliveClientMixin{
       if (_scrollController.position.pixels ==_scrollController.position.maxScrollExtent) {
         _getMore();
       }
+
+      //当前位置是否超过屏幕高度
+      if (_scrollController.offset <200 && showToTopBtn) {
+        setState(() {
+          showToTopBtn = false;
+        });
+      } else if (_scrollController.offset >= 200  && showToTopBtn == false) {
+        setState(() {
+          showToTopBtn = true;
+        });
+      }
+
     });
   }
 
@@ -69,6 +82,16 @@ class HomePageState extends State<HomePage>with AutomaticKeepAliveClientMixin{
             controller: _scrollController,
             //包含轮播图和加载更多
             itemCount: _datas.length + 2),
+      ),
+      floatingActionButton: !showToTopBtn ? null : FloatingActionButton(
+          child: Icon(Icons.arrow_upward),
+          onPressed: () {
+            //返回到顶部时执行动画
+            _scrollController.animateTo(.0,
+                duration: Duration(milliseconds: 200),
+                curve: Curves.ease
+            );
+          }
       ),
     );
   }

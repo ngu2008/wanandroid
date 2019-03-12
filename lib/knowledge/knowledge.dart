@@ -13,23 +13,37 @@ class KnowledgePage extends StatefulWidget {
 }
 
 class KnowledgePageState extends State<KnowledgePage> {
-
   List<SystemTreeData> _datas = new List();
+  //listview控制器
+  ScrollController _scrollController = ScrollController();
+  bool showToTopBtn = false; //是否显示“返回到顶部”按钮
 
   @override
   void initState() {
     super.initState();
     _getData();
-  }
 
-  Future<Null> _getData() async {
-    CommonService().getSystemTree((SystemTreeModel _systemTreeModel){
-      setState(() {
-        _datas=_systemTreeModel.data;
-      });
+    _scrollController.addListener(() {
+      //当前位置是否超过屏幕高度
+      if (_scrollController.offset < 200 && showToTopBtn) {
+        setState(() {
+          showToTopBtn = false;
+        });
+      } else if (_scrollController.offset >= 200 && showToTopBtn == false) {
+        setState(() {
+          showToTopBtn = true;
+        });
+      }
     });
   }
 
+  Future<Null> _getData() async {
+    CommonService().getSystemTree((SystemTreeModel _systemTreeModel) {
+      setState(() {
+        _datas = _systemTreeModel.data;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,15 +51,27 @@ class KnowledgePageState extends State<KnowledgePage> {
       body: RefreshIndicator(
         onRefresh: _getData,
         child: ListView.separated(
-            itemBuilder: _renderRow,
-            physics: new AlwaysScrollableScrollPhysics(),
-            separatorBuilder: (BuildContext context, int index) {
-              return Container(
-                height: 0.5,
-                color: Colors.black26,
-              );
-            },
-            itemCount: _datas.length),
+          itemBuilder: _renderRow,
+          physics: new AlwaysScrollableScrollPhysics(),
+          separatorBuilder: (BuildContext context, int index) {
+            return Container(
+              height: 0.5,
+              color: Colors.black26,
+            );
+          },
+          itemCount: _datas.length,
+          controller: _scrollController,
+        ),
+      ),
+      floatingActionButton: !showToTopBtn ? null : FloatingActionButton(
+          child: Icon(Icons.arrow_upward),
+          onPressed: () {
+            //返回到顶部时执行动画
+            _scrollController.animateTo(.0,
+                duration: Duration(milliseconds: 200),
+                curve: Curves.ease
+            );
+          }
       ),
     );
   }
@@ -53,45 +79,45 @@ class KnowledgePageState extends State<KnowledgePage> {
   Widget _renderRow(BuildContext context, int index) {
     if (index < _datas.length) {
       return InkWell(
-        onTap: () {
-          Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
-            return new KnowledgeContentPage(new ValueKey(_datas[index]));
-          }));
-        },
-        child: Container(
-          color: Colors.white,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Expanded(
-                  child: Container(
-                    padding: EdgeInsets.all(16),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          padding: EdgeInsets.only(bottom: 8),
-                          child: Text(
-                            _datas[index].name,
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: Color(0xFF3D4E5F),
-                                fontWeight: FontWeight.bold),
-                            textAlign: TextAlign.left,
-                          ),
+          onTap: () {
+            Navigator.of(context)
+                .push(new MaterialPageRoute(builder: (context) {
+              return new KnowledgeContentPage(new ValueKey(_datas[index]));
+            }));
+          },
+          child: Container(
+            color: Colors.white,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Expanded(
+                    child: Container(
+                  padding: EdgeInsets.all(16),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        padding: EdgeInsets.only(bottom: 8),
+                        child: Text(
+                          _datas[index].name,
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: Color(0xFF3D4E5F),
+                              fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.left,
                         ),
-                        Container(
-                            alignment: Alignment.centerLeft,
-                            child: buildChildren(_datas[index].children)),
-                      ],
-                    ),
-                  )),
-              Icon(Icons.chevron_right)
-            ],
-          ),
-        )
-      );
+                      ),
+                      Container(
+                          alignment: Alignment.centerLeft,
+                          child: buildChildren(_datas[index].children)),
+                    ],
+                  ),
+                )),
+                Icon(Icons.chevron_right)
+              ],
+            ),
+          ));
     }
     return null;
   }
@@ -119,4 +145,9 @@ class KnowledgePageState extends State<KnowledgePage> {
     return content;
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+    _scrollController.dispose();
+  }
 }

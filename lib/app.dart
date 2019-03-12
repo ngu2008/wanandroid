@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wanandroid_ngu/drawer/drawer.dart';
 import 'package:wanandroid_ngu/home/home_page.dart';
 import 'package:wanandroid_ngu/knowledge/knowledge.dart';
 import 'package:wanandroid_ngu/navigation/navigation.dart';
@@ -20,6 +21,7 @@ class AppState extends State<App> {
   final appBarTitles = ['首页', '体系', '公众号', '导航', "项目"];
 
   bool _showAppbar = true;
+  bool _showDrawer = true;
 
   var pages = <Widget>[
     HomePage(),
@@ -34,6 +36,7 @@ class AppState extends State<App> {
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
+        drawer: _showDrawer ? DrawerPage() : null,
         appBar:_showAppbar ? AppBar(
           centerTitle: true,
           title: new Text(appBarTitles[_selectedIndex]),
@@ -67,6 +70,13 @@ class AppState extends State<App> {
       } else {
         _showAppbar = false;
       }
+
+      if (_selectedIndex == 0) {
+        _showDrawer = true;
+      } else {
+        _showDrawer = false;
+      }
+
     });
   }
 

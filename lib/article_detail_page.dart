@@ -40,6 +40,12 @@ class ArticleDetailPageState extends State<ArticleDetailPage> {
         });
       }
     });
+
+    flutterWebViewPlugin.onScrollYChanged.listen((double offsetY) {
+
+
+    });
+
   }
 
   @override

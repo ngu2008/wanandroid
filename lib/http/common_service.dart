@@ -114,6 +114,7 @@ class CommonService{
       "repassword":_password
     });
     DioManager.singleton.dio.post(Api.USER_REGISTER, data: formData, options: null).then((response) {
+      print(response.toString());
       callback(UserModel(response.data));
     });
   }

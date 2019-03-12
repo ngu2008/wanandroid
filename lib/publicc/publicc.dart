@@ -70,6 +70,7 @@ class NewsList extends StatefulWidget {
   final int id;
   NewsList(this.id);
 
+
   @override
   _NewsListState createState() {
     return new _NewsListState();
@@ -80,6 +81,8 @@ class _NewsListState extends State<NewsList> {
   List<WxArticleContentDatas> _datas = new List();
   ScrollController _scrollController = ScrollController();
   int _page = 1;
+
+  bool showToTopBtn = false; //是否显示“返回到顶部”按钮
 
   Future<Null> _getData() async {
     _page = 1;
@@ -113,6 +116,19 @@ class _NewsListState extends State<NewsList> {
         _getMore();
       }
     });
+
+    _scrollController.addListener(() {
+      //当前位置是否超过屏幕高度
+      if (_scrollController.offset < 200 && showToTopBtn) {
+        setState(() {
+          showToTopBtn = false;
+        });
+      } else if (_scrollController.offset >= 200 && showToTopBtn == false) {
+        setState(() {
+          showToTopBtn = true;
+        });
+      }
+    });
   }
 
   @override
@@ -138,6 +154,16 @@ class _NewsListState extends State<NewsList> {
             controller: _scrollController,
             //包含加载更多
             itemCount: _datas.length + 1),
+      ),
+      floatingActionButton: !showToTopBtn ? null : FloatingActionButton(
+          child: Icon(Icons.arrow_upward),
+          onPressed: () {
+            //返回到顶部时执行动画
+            _scrollController.animateTo(.0,
+                duration: Duration(milliseconds: 200),
+                curve: Curves.ease
+            );
+          }
       ),
     );
   }

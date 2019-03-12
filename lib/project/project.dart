@@ -82,6 +82,8 @@ class _ProjectListState extends State<ProjectList> {
   ScrollController _scrollController = ScrollController();
   int _page = 1;
 
+  bool showToTopBtn = false; //是否显示“返回到顶部”按钮
+
   Future<Null> _getData() async {
     _page = 1;
     int _id = widget.id;
@@ -112,6 +114,19 @@ class _ProjectListState extends State<ProjectList> {
         _getMore();
       }
     });
+
+    _scrollController.addListener(() {
+      //当前位置是否超过屏幕高度
+      if (_scrollController.offset < 200 && showToTopBtn) {
+        setState(() {
+          showToTopBtn = false;
+        });
+      } else if (_scrollController.offset >= 200 && showToTopBtn == false) {
+        setState(() {
+          showToTopBtn = true;
+        });
+      }
+    });
   }
 
   @override
@@ -137,6 +152,16 @@ class _ProjectListState extends State<ProjectList> {
             controller: _scrollController,
             //包含加载更多
             itemCount: _datas.length + 1),
+      ),
+      floatingActionButton: !showToTopBtn ? null : FloatingActionButton(
+          child: Icon(Icons.arrow_upward),
+          onPressed: () {
+            //返回到顶部时执行动画
+            _scrollController.animateTo(.0,
+                duration: Duration(milliseconds: 200),
+                curve: Curves.ease
+            );
+          }
       ),
     );
   }

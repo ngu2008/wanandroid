@@ -27,6 +27,7 @@ class User {
   if (cookies != null) {
     cookie = cookies;
   }
+
   String username = sp.getString("username");
   if(username!=null){
     userName = username;
@@ -43,6 +44,7 @@ class User {
     cookie = null;
     userName = null;
     clearInfo();
+
   }
   
   clearInfo() async {

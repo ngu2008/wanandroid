@@ -13,11 +13,28 @@ class NavigationPage extends StatefulWidget {
 
 class NavigationState extends State<NavigationPage> {
   List<NaviData> _naviTitles = new List();
+  //listview控制器
+  ScrollController _scrollController = ScrollController();
+  bool showToTopBtn = false; //是否显示“返回到顶部”按钮
 
   @override
   void initState() {
     super.initState();
     _getData();
+    _scrollController.addListener(() {
+      _scrollController.addListener(() {
+        //当前位置是否超过屏幕高度
+        if (_scrollController.offset < 200 && showToTopBtn) {
+          setState(() {
+            showToTopBtn = false;
+          });
+        } else if (_scrollController.offset >= 200 && showToTopBtn == false) {
+          setState(() {
+            showToTopBtn = true;
+          });
+        }
+      });
+    });
   }
 
   Future<Null> _getData() async {
@@ -32,16 +49,27 @@ class NavigationState extends State<NavigationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: RefreshIndicator(
-      child: _rightListView(context),
-      onRefresh: _getData,
-    ));
+      body: RefreshIndicator(
+        child: _rightListView(context),
+        onRefresh: _getData,
+      ),
+      floatingActionButton: !showToTopBtn
+          ? null
+          : FloatingActionButton(
+              child: Icon(Icons.arrow_upward),
+              onPressed: () {
+                //返回到顶部时执行动画
+                _scrollController.animateTo(.0,
+                    duration: Duration(milliseconds: 200), curve: Curves.ease);
+              }),
+    );
   }
 
   Widget _rightListView(BuildContext context) {
     return ListView.separated(
         itemBuilder: _renderContent,
         itemCount: _naviTitles.length,
+        controller: _scrollController,
         physics: new AlwaysScrollableScrollPhysics(),
         separatorBuilder: (BuildContext context, int index) {
           return Container(
