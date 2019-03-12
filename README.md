@@ -20,12 +20,12 @@
 
 ## 功能介绍
 
-##### V1.1版本
+#### V1.1版本
 
 - 列表页悬浮FloatingActionButton,点击迅速回到顶部
 - 新增注册、登录、我的收藏，增加侧滑抽屉，详见截图
 
-#####V1.0版本
+#### V1.0版本
 - 项目首页、知识体系、公众号、导航、项目、各个页面，和详情页面
 - 主要的UI包括首页轮播图和列表，体系流式布局，公众号导航TabBar,以及下拉刷新和加载更多
 - 轮播图使用的是开源库[flutter_swiper](https://github.com/best-flutter/flutter_swiper)
@@ -40,8 +40,8 @@
 - 暂不支持IOS版本下载，请自行clone项目代码运行。
 
 ## 项目截图
-<img src="/screenshot/a0.jpg" width="400">         <img src="/screenshot/a01.jpg" width="400"> 
-         <img src="/screenshot/a02.jpg" width="400"> 
+<img src="/screenshot/a0.png" width="400">         <img src="/screenshot/a01.png" width="400"> 
+<img src="/screenshot/a02.jpg" width="400"> 
 <img src="/screenshot/a1.jpg" width="400">         <img src="/screenshot/a2.jpg" width="400"> 
 <img src="/screenshot/a3.jpg" width="400">         <img src="/screenshot/a4.jpg" width="400">
 <img src="/screenshot/a5.jpg" width="400">         <img src="/screenshot/a6.jpg" width="400">
