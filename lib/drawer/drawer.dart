@@ -3,6 +3,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:wanandroid_ngu/common/application.dart';
 import 'package:wanandroid_ngu/common/user.dart';
 import 'package:wanandroid_ngu/drawer/my_collections.dart';
+import 'package:wanandroid_ngu/drawer/setting.dart';
 import 'package:wanandroid_ngu/event/login_event.dart';
 import 'package:wanandroid_ngu/login/login_page.dart';
 import 'package:wanandroid_ngu/public_ui/webview_page.dart';
@@ -105,7 +106,9 @@ class DrawerPageState extends State<DrawerPage> {
             ),
             leading: Icon(Icons.settings, size: 22.0),
             onTap: () {
-              Fluttertoast.showToast(msg: "设置");
+              Navigator.of(context).push(new MaterialPageRoute(builder: (context){
+                return new SettingPage();
+              }));
             },
           ),
           ListTile(
@@ -120,7 +123,7 @@ class DrawerPageState extends State<DrawerPage> {
           ),
           ListTile(
             title: Text(
-              '关于',
+              '关于作者',
               textAlign: TextAlign.left,
             ),
             leading: Icon(Icons.info, size: 22.0),

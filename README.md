@@ -13,8 +13,8 @@
 ## 前言
 
 - 这是一款使用Flutter写的WanAndroid客户端应用，在Android和IOS都完美运行
-- 可以用来入门Flutter，简单明了，适合初学者
-- [项目完全开源](https://github.com/ngu2008/wanandroid_ngu)，如果本项目确实能够帮助到你学习Flutter，请start，有问题请提交Issues,我会及时回复
+- ~~可以用来入门Flutter，简单明了，适合初学者，~~  
+- [项目完全开源](https://github.com/ngu2008/wanandroid_ngu)，如果本项目确实能够帮助到你学习Flutter，谢谢start一下，有问题请提交Issues,我会及时回复
 
 ## 环境搭建
 

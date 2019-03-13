@@ -22,7 +22,7 @@ class SplashScreenState extends State<SplashScreen> {
       new Slide(
         title: "Flutter",
         description:
-        "Flutter是谷歌的移动UI框架，可以快速在iOS和Android上构建高质量的原生用户界面。 Flutter可以与现有的代码一起工作。在全世界，Flutter正在被越来越多的开发者和组织使用，并且Flutter是完全免费、开源的.",
+        "Flutter是谷歌的移动UI框架，可以快速在iOS和Android上构建高质量的原生用户界面。 Flutter可以与现有的代码一起工作。在全世界，Flutter正在被越来越多的开发者和组织使用，并且Flutter是完全免费、开源的。",
         styleDescription: TextStyle(
             color: Colors.white,
             fontSize: 20.0,
@@ -39,7 +39,7 @@ class SplashScreenState extends State<SplashScreen> {
       new Slide(
         title: "Wanandroid",
         description:
-        "这是一款使用Flutter写的WanAndroid客户端应用，在Android和IOS都完美运行,可以用来入门Flutter，简单明了，适合初学者,项目完全开源，如果本项目确实能够帮助到你学习Flutter，谢谢start，有问题请提交Issues,我会及时回复",
+        "这是一款使用Flutter写的WanAndroid客户端应用，在Android和IOS都完美运行,可以用来入门Flutter，简单明了，适合初学者,项目完全开源，如果本项目确实能够帮助到你学习Flutter，谢谢start，有问题请提交Issues,我会及时回复。",
         styleDescription: TextStyle(
             color: Colors.white,
             fontSize: 20.0,
@@ -56,7 +56,7 @@ class SplashScreenState extends State<SplashScreen> {
       new Slide(
         title: "Welcome",
         description:
-        "赠人玫瑰，手有余香。分享技术，传递快乐.",
+        "赠人玫瑰，手有余香；\n分享技术，传递快乐。",
         styleDescription: TextStyle(
             color: Colors.white,
             fontSize: 20.0,

@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: new ThemeData(
         primaryColor: const Color(0xFF5394FF),
-        scaffoldBackgroundColor: Color(0xFFebebeb),
+        scaffoldBackgroundColor: Color(0xFFFFFFFF),
         accentColor: const Color(0xFF5394FF),
       ),
 

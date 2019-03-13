@@ -49,6 +49,7 @@ class NavigationState extends State<NavigationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: RefreshIndicator(
         child: _rightListView(context),
         onRefresh: _getData,
