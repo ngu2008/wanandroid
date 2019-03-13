@@ -34,7 +34,7 @@
 - 网络请求使用的是开源库[dio](https://github.com/flutterchina/dio)
 
 ## 我的掘金主页
- - [点击打开](https://juejin.im/user/5b319afee51d455e2c32fb5b)
+ - [点击打开](https://juejin.im/user/5b319afee51d455e2c32fb5b/posts)
 
 
 ## 下载
