@@ -45,18 +45,18 @@
   ![](screenshot/a7.png)
 
 - 暂不支持IOS版本下载，请自行clone项目代码运行。
-<img src="/screenshot/b1.jpg" width="300">
+
 ## 项目截图
 
-<img src="/screenshot/b1.jpg" width="300">&emsp;&emsp;<img src="/screenshot/b2.jpg" width="300">&emsp;&emsp; <img src="/screenshot/a0.png" width="300">
+<img src="/screenshot/b1.jpg" width="240">&emsp;&emsp;<img src="/screenshot/b2.jpg" width="240">&emsp;&emsp; <img src="/screenshot/a0.png" width="240">
 
-<img src="/screenshot/a01.png" width="300"> &emsp;&emsp; <img src="/screenshot/a02.jpg" width="300">&emsp;&emsp;   <img src="/screenshot/a1.jpg" width="300">
+<img src="/screenshot/a01.png" width="240"> &emsp;&emsp; <img src="/screenshot/a02.jpg" width="240">&emsp;&emsp;   <img src="/screenshot/a1.jpg" width="240">
 
-<img src="/screenshot/a2.jpg" width="300">&emsp;&emsp;    <img src="/screenshot/a3.jpg" width="300">&emsp;&emsp;<img src="/screenshot/a4.jpg" width="300">
+<img src="/screenshot/a2.jpg" width="240">&emsp;&emsp;    <img src="/screenshot/a3.jpg" width="240">&emsp;&emsp;<img src="/screenshot/a4.jpg" width="240">
 
-<img src="/screenshot/a5.jpg" width="300">&emsp;&emsp;<img src="/screenshot/a6.jpg" width="300">&emsp;&emsp;<img src="/screenshot/a8.jpg" width="300">
+<img src="/screenshot/a5.jpg" width="240">&emsp;&emsp;<img src="/screenshot/a6.jpg" width="240">&emsp;&emsp;<img src="/screenshot/a8.jpg" width="240">
 
-<img src="/screenshot/a9.jpg" width="300">&emsp;&emsp;  
+<img src="/screenshot/a9.jpg" width="240">&emsp;&emsp;  
 
 ## 感谢
 
