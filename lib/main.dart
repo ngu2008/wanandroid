@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wanandroid_ngu/common/user.dart';
+import 'package:wanandroid_ngu/splash_screen.dart';
 import './app.dart';
 import './loading.dart';
 import 'dart:io';
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
 
       routes: <String, WidgetBuilder>{
         "app": (BuildContext context) => new App(),
+        "splash": (BuildContext context) => new SplashScreen(),
       },
 
       home: new LoadingPage(),

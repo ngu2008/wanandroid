@@ -13,8 +13,8 @@ class _LoadingState extends State<LoadingPage> {
   void initState(){
     super.initState();
     //在加载页面停顿3秒
-    new Future.delayed(Duration(seconds: 3),(){
-      Navigator.of(context).pushReplacementNamed("app");
+    new Future.delayed(Duration(seconds: 2),(){
+      Navigator.of(context).pushReplacementNamed("splash");
     });
   }
 
@@ -24,7 +24,7 @@ class _LoadingState extends State<LoadingPage> {
       child: Stack(
         children: <Widget>[
           //加载页面居中背景图 使用cover模式
-          Image.asset("images/loading.jpg",fit: BoxFit.cover,),
+          Image.asset("images/loading.png",fit: BoxFit.cover,),
         ],
       ),
     );

@@ -6,12 +6,14 @@
 - [阿里巴巴咸鱼团队系列文章](https://www.yuque.com/xytech/flutter)
 - [阿里巴巴flutter-go](https://github.com/alibaba/flutter-go)，flutter 开发者帮助 APP，包含 flutter 常用 140+ 组件的demo 演示与中文文档
 - [玩Android跨平台项目](https://www.wanandroid.com/project/list/1?cid=402)
+- 非常有用的[Json转Model插件](https://github.com/neverwoodsS/idea_dart_json_format)
+- [Flutter-Notebook](https://github.com/OpenFlutter/Flutter-Notebook),提供了很多优秀样例和Demo
 
 ## 前言
 
 - 这是一款使用Flutter写的WanAndroid客户端应用，在Android和IOS都完美运行
 - 可以用来入门Flutter，简单明了，适合初学者
-- [项目完全开源](https://github.com/ngu2008/wanandroid_ngu)，如果本项目确实能够帮助到你学习Flutter，请给我一个start鼓励一下，有问题请提交Issues,我回及时回复
+- [项目完全开源](https://github.com/ngu2008/wanandroid_ngu)，如果本项目确实能够帮助到你学习Flutter，请start，有问题请提交Issues,我会及时回复
 
 ## 环境搭建
 
@@ -22,6 +24,7 @@
 
 #### V1.1版本
 
+- 新增引导页
 - 列表页悬浮FloatingActionButton,点击迅速回到顶部
 - 新增注册、登录、我的收藏，增加侧滑抽屉，详见截图
 
@@ -30,6 +33,9 @@
 - 主要的UI包括首页轮播图和列表，体系流式布局，公众号导航TabBar,以及下拉刷新和加载更多
 - 轮播图使用的是开源库[flutter_swiper](https://github.com/best-flutter/flutter_swiper)
 - 网络请求使用的是开源库[dio](https://github.com/flutterchina/dio)
+
+## 我的掘金主页
+ - [点击打开](https://juejin.im/user/5b319afee51d455e2c32fb5b/posts)
 
 
 ## 下载
@@ -40,6 +46,7 @@
 - 暂不支持IOS版本下载，请自行clone项目代码运行。
 
 ## 项目截图
+<img src="/screenshot/b1.jpg" width="400">         <img src="/screenshot/b2.jpg" width="400"> 
 <img src="/screenshot/a0.png" width="400">         <img src="/screenshot/a01.png" width="400"> 
 <img src="/screenshot/a02.jpg" width="400"> 
 <img src="/screenshot/a1.jpg" width="400">         <img src="/screenshot/a2.jpg" width="400"> 
