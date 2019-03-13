@@ -1,5 +1,6 @@
 ## Flutter学习资源汇总持续更新中......
 
+- [Flutter官方网站](https://flutter.dev/)
 - [Flutter中文网](https://flutterchina.club/)
 - wendux的[Flutter实战](https://book.flutterchina.club/)
 - Flutter官方example[flutter_gallery](https://github.com/flutter/flutter/tree/master/examples/flutter_gallery)
