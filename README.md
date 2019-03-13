@@ -24,6 +24,7 @@
 
 #### V1.1版本
 
+- 新增引导页
 - 列表页悬浮FloatingActionButton,点击迅速回到顶部
 - 新增注册、登录、我的收藏，增加侧滑抽屉，详见截图
 
@@ -45,6 +46,7 @@
 - 暂不支持IOS版本下载，请自行clone项目代码运行。
 
 ## 项目截图
+<img src="/screenshot/b1.jpg" width="400">         <img src="/screenshot/b2.jpg" width="400"> 
 <img src="/screenshot/a0.png" width="400">         <img src="/screenshot/a01.png" width="400"> 
 <img src="/screenshot/a02.jpg" width="400"> 
 <img src="/screenshot/a1.jpg" width="400">         <img src="/screenshot/a2.jpg" width="400"> 
