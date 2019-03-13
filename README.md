@@ -45,7 +45,7 @@
   ![](screenshot/a7.png)
 
 - 暂不支持IOS版本下载，请自行clone项目代码运行。
-
+<img src="/screenshot/b1.jpg" width="300">
 ## 项目截图
 
 <img src="/screenshot/b1.jpg" width="300">&emsp;&emsp;<img src="/screenshot/b2.jpg" width="300">&emsp;&emsp; <img src="/screenshot/a0.png" width="300">
