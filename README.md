@@ -25,7 +25,7 @@
 
 #### V1.1版本
 
-- 新增引导页
+- 新增引导页[flutter-intro-slider](https://github.com/duytq94/flutter-intro-slider)
 - 列表页悬浮FloatingActionButton,点击迅速回到顶部
 - 新增注册、登录、我的收藏，增加侧滑抽屉，详见截图
 
@@ -70,9 +70,7 @@
 ## 使用开源库
 
 - [flutter_swiper](https://pub.flutter-io.cn/packages/flutter_swiper)
-
 - [cupertino_icons](https://pub.flutter-io.cn/packages/cupertino_icons)
-
 - [flutter_webview_plugin](https://pub.flutter-io.cn/packages/flutter_webview_plugin)
-
 - [dio](https://pub.flutter-io.cn/packages/dio)
+- [flutter-intro-slider](https://github.com/duytq94/flutter-intro-slider)
