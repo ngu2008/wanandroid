@@ -7,6 +7,7 @@
 - [阿里巴巴flutter-go](https://github.com/alibaba/flutter-go)，flutter 开发者帮助 APP，包含 flutter 常用 140+ 组件的demo 演示与中文文档
 - [玩Android跨平台项目](https://www.wanandroid.com/project/list/1?cid=402)
 - 非常有用的[Json转Model插件](https://github.com/neverwoodsS/idea_dart_json_format)
+- [Flutter-Notebook](https://github.com/OpenFlutter/Flutter-Notebook),提供了很多优秀样例和Demo
 
 ## 前言
 
@@ -31,6 +32,9 @@
 - 主要的UI包括首页轮播图和列表，体系流式布局，公众号导航TabBar,以及下拉刷新和加载更多
 - 轮播图使用的是开源库[flutter_swiper](https://github.com/best-flutter/flutter_swiper)
 - 网络请求使用的是开源库[dio](https://github.com/flutterchina/dio)
+
+## 我的掘金主页
+ - [点击打开](https://juejin.im/user/5b319afee51d455e2c32fb5b)
 
 
 ## 下载
