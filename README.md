@@ -25,6 +25,7 @@
 
 #### V1.2版本
 
+- 新增福利，妹子图，你懂得
 - 新增分享[share](https://pub.flutter-io.cn/packages/share)
 - 新增常用网站
 - 新增关于作者，退出登录
@@ -55,6 +56,8 @@
 
 ## 项目截图
 
+<img src="/screenshot/b6.jpg" width="240">&emsp;&emsp;
+
 <img src="/screenshot/b2.jpg" width="240">&emsp;&emsp; <img src="/screenshot/b1.jpg" width="240">&emsp;&emsp;<img src="/screenshot/a0.png" width="240">
 
 <img src="/screenshot/b3.png" width="240">&emsp;&emsp; <img src="/screenshot/b4.jpg" width="240">&emsp;&emsp;<img src="/screenshot/b5.jpg" width="240">
@@ -72,7 +75,8 @@
 ## 感谢
 
 1. 特别感谢github开源作者[shijiacheng](https://github.com/shijiacheng/wanandroid_flutter)
-2. 感谢鸿洋大神及[玩Android官网](http://www.wanandroid.com/)提供的[开放API](http://www.wanandroid.com/blog/show/2)。
+2. 感谢鸿洋大神及[玩Android官网](http://www.wanandroid.com/)提供的[开放API](http://www.wanandroid.com/blog/show/2)
+3. 感谢[干货集中营 API](http://gank.io/api)
 
 
 ## 使用开源库

@@ -6,6 +6,7 @@ import 'package:wanandroid_ngu/common/user.dart';
 import 'package:wanandroid_ngu/drawer/about.dart';
 import 'package:wanandroid_ngu/drawer/common_website.dart';
 import 'package:wanandroid_ngu/drawer/my_collections.dart';
+import 'package:wanandroid_ngu/drawer/pretty.dart';
 import 'package:wanandroid_ngu/drawer/setting.dart';
 import 'package:wanandroid_ngu/event/login_event.dart';
 import 'package:wanandroid_ngu/login/login_page.dart';
@@ -130,6 +131,19 @@ class DrawerPageState extends State<DrawerPage> {
               Share.share('给你推荐一个特别好玩的应用玩安卓客户端，点击下载：https://www.pgyer.com/haFL');
             },
           ),
+          ListTile(
+            title: Text(
+              '妹子图',
+              textAlign: TextAlign.left,
+            ),
+            leading: Icon(Icons.directions_bike, size: 22.0),
+            onTap: () {
+              Navigator.of(context).push(new MaterialPageRoute(builder: (context){
+                return new PrettyPage();
+              }));
+            },
+          ),
+
           ListTile(
             title: Text(
               '关于作者',

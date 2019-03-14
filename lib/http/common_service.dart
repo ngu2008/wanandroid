@@ -8,6 +8,7 @@ import 'package:wanandroid_ngu/model/collection_model.dart';
 import 'package:wanandroid_ngu/model/common_websit_model.dart';
 import 'package:wanandroid_ngu/model/hotword_model.dart';
 import 'package:wanandroid_ngu/model/navi_model.dart';
+import 'package:wanandroid_ngu/model/pretty_model.dart';
 import 'package:wanandroid_ngu/model/projectlist_model.dart';
 import 'package:wanandroid_ngu/model/project_tree_model.dart';
 import 'package:wanandroid_ngu/model/system_tree_content_model.dart';
@@ -160,11 +161,15 @@ class CommonService{
     DioManager.singleton.dio.get(Api.COMMON_WEBSITE,options:_getOptions()).then((response){
       callback(CommonWebsitModel.fromMap(response.data));
     });
-
   }
 
+//http://gank.io/api/data/福利/10/1
 
-
+  void getPrettyGirl(Function callback,int _page) async{
+    DioManager.singleton.dio.get("http://gank.io/api/data/福利/10/"+"$_page").then((response){
+      callback(PrettyModel.fromMap(response.data));
+    });
+  }
 
 
   /// 取消网站收藏
