@@ -27,7 +27,9 @@ class Api{
   static const String USER_REGISTER = "https://www.wanandroid.com/user/register";
   // 收藏列表
   static const String COLLECTION_LIST = "https://www.wanandroid.com/lg/collect/list/";
-  
+  //常用网站
+  static const String COMMON_WEBSITE = "https://www.wanandroid.com/friend/json";
+
   // 我的收藏-取消收藏
   static const String CANCEL_COLLECTION = "https://www.wanandroid.com/lg/uncollect/";
   

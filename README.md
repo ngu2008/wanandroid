@@ -23,6 +23,12 @@
 
 ## 功能介绍
 
+#### V1.2版本
+
+- 新增分享[share](https://pub.flutter-io.cn/packages/share)
+- 新增常用网站
+- 新增关于作者，退出登录
+
 #### V1.1版本
 
 - 新增引导页[flutter-intro-slider](https://github.com/duytq94/flutter-intro-slider)
@@ -51,8 +57,9 @@
 
 <img src="/screenshot/b2.jpg" width="240">&emsp;&emsp; <img src="/screenshot/b1.jpg" width="240">&emsp;&emsp;<img src="/screenshot/a0.png" width="240">
 
+<img src="/screenshot/b3.png" width="240">&emsp;&emsp; <img src="/screenshot/b4.jpg" width="240">&emsp;&emsp;<img src="/screenshot/b5.jpg" width="240">
 
-<img src="/screenshot/a01.png" width="240"> &emsp;&emsp; <img src="/screenshot/a02.jpg" width="240">&emsp;&emsp;   <img src="/screenshot/a1.jpg" width="240">
+<img src="/screenshot/a01.png" width="240"> &emsp;&emsp; <img src="/screenshot/a02.jpg" width="240">&emsp;&emsp;<img src="/screenshot/a1.jpg" width="240">
 
 
 <img src="/screenshot/a2.jpg" width="240">&emsp;&emsp;    <img src="/screenshot/a3.jpg" width="240">&emsp;&emsp;<img src="/screenshot/a4.jpg" width="240">
@@ -70,6 +77,7 @@
 
 ## 使用开源库
 
+- [share](https://pub.flutter-io.cn/packages/share)
 - [flutter_swiper](https://pub.flutter-io.cn/packages/flutter_swiper)
 - [cupertino_icons](https://pub.flutter-io.cn/packages/cupertino_icons)
 - [flutter_webview_plugin](https://pub.flutter-io.cn/packages/flutter_webview_plugin)

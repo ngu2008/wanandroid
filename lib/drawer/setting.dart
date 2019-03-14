@@ -46,7 +46,7 @@ class SettingPage extends StatelessWidget {
                     children: <Widget>[
                       Expanded(
                           child: Text(
-                        "切换主题",
+                        "切换语言",
                         style: TextStyle(fontSize: 16),
                       )),
                       new Image.asset(

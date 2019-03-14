@@ -1,12 +1,16 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:wanandroid_ngu/common/application.dart';
 import 'package:wanandroid_ngu/common/user.dart';
+import 'package:wanandroid_ngu/drawer/about.dart';
+import 'package:wanandroid_ngu/drawer/common_website.dart';
 import 'package:wanandroid_ngu/drawer/my_collections.dart';
 import 'package:wanandroid_ngu/drawer/setting.dart';
 import 'package:wanandroid_ngu/event/login_event.dart';
 import 'package:wanandroid_ngu/login/login_page.dart';
 import 'package:wanandroid_ngu/public_ui/webview_page.dart';
+import 'package:share/share.dart';
 
 class DrawerPage extends StatefulWidget {
   @override
@@ -41,6 +45,9 @@ class DrawerPageState extends State<DrawerPage> {
       username = User.singleton.userName;
     });
   }
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +103,9 @@ class DrawerPageState extends State<DrawerPage> {
             ),
             leading: Icon(Icons.web, size: 22.0),
             onTap: () {
-              Fluttertoast.showToast(msg: "常用网站");
+              Navigator.of(context).push(new MaterialPageRoute(builder: (context){
+                return new CommonWebsitePage();
+              }));
             },
           ),
           ListTile(
@@ -118,7 +127,7 @@ class DrawerPageState extends State<DrawerPage> {
             ),
             leading: Icon(Icons.share, size: 22.0),
             onTap: () {
-              Fluttertoast.showToast(msg: "分享");
+              Share.share('给你推荐一个特别好玩的应用玩安卓客户端，点击下载：https://www.pgyer.com/haFL');
             },
           ),
           ListTile(
@@ -129,7 +138,7 @@ class DrawerPageState extends State<DrawerPage> {
             leading: Icon(Icons.info, size: 22.0),
             onTap: () {
               Navigator.of(context).push(new MaterialPageRoute(builder: (context){
-                return new WebViewPage(title: "ngu2008",url: "https://github.com/ngu2008/wanandroid");
+                return new AboutMePage();
               }));
             },
           ),

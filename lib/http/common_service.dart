@@ -5,6 +5,7 @@ import 'package:wanandroid_ngu/model/article_model.dart';
 import 'package:wanandroid_ngu/model/banner_model.dart';
 import 'package:wanandroid_ngu/model/base_model.dart';
 import 'package:wanandroid_ngu/model/collection_model.dart';
+import 'package:wanandroid_ngu/model/common_websit_model.dart';
 import 'package:wanandroid_ngu/model/hotword_model.dart';
 import 'package:wanandroid_ngu/model/navi_model.dart';
 import 'package:wanandroid_ngu/model/projectlist_model.dart';
@@ -153,6 +154,19 @@ class CommonService{
       callback(WebsiteCollectionModel(response.data));
     });
   }
+
+  ///常用网站
+  void getCommonWebsite(Function callback) async{
+    DioManager.singleton.dio.get(Api.COMMON_WEBSITE,options:_getOptions()).then((response){
+      callback(CommonWebsitModel.fromMap(response.data));
+    });
+
+  }
+
+
+
+
+
   /// 取消网站收藏
   void cancelWebsiteCollectionList(Function callback,int _id) async {
     FormData formData = new FormData.from({
