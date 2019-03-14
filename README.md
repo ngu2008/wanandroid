@@ -84,7 +84,8 @@
 <img src="/screenshot/a8.jpg" width="280" height="498" alt="我的收藏"/>
 <img src="/screenshot/a9.jpg" width="280" height="498" alt="详情页"/><br/>
 </h2>
-## 感谢
+
+##  感谢
 
 1. 特别感谢github开源作者[shijiacheng](https://github.com/shijiacheng/wanandroid_flutter)
 2. 感谢鸿洋大神及[玩Android官网](http://www.wanandroid.com/)提供的[开放API](http://www.wanandroid.com/blog/show/2)
