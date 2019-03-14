@@ -56,9 +56,7 @@
 
 ## 项目截图
 
-<img src="/screenshot/b6.jpg" width="240">&emsp;&emsp;
-
-<img src="/screenshot/b2.jpg" width="240">&emsp;&emsp; <img src="/screenshot/b1.jpg" width="240">&emsp;&emsp;<img src="/screenshot/a0.png" width="240">
+<img src="/screenshot/b6.jpg" width="240">&emsp;&emsp;<img src="/screenshot/b2.jpg" width="240">&emsp;&emsp; <img src="/screenshot/b1.jpg" width="240">&emsp;&emsp;<img src="/screenshot/a0.png" width="240">
 
 <img src="/screenshot/b3.png" width="240">&emsp;&emsp; <img src="/screenshot/b4.jpg" width="240">&emsp;&emsp;<img src="/screenshot/b5.jpg" width="240">
 
