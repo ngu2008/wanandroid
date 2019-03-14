@@ -57,37 +57,32 @@
 ## 项目截图
 <h2 align="center">
 <img src="/screenshot/b6.jpg" width="280" height="498" alt="福利，妹子图"/>
- <img src="/screenshot/b2.jpg" width="280" height="498" alt="导航页"/>
- <img src="/screenshot/b1.jpg" width="280" height="498" alt="导航页"/>
+<img src="/screenshot/b2.jpg" width="280" height="498" alt="导航页"/>
+<img src="/screenshot/b1.jpg" width="280" height="498" alt="导航页"/><br/>
 </h2>
-
 <h2 align="center">
 <img src="/screenshot/a0.png" width="280" height="498" alt="登录"/>
 <img src="/screenshot/b3.png" width="280" height="498" alt="常用网站"/>
-<img src="/screenshot/b4.jpg" width="280" height="498" alt="分享"/>
+<img src="/screenshot/b4.jpg" width="280" height="498" alt="分享"/><br/>
 </h2>
-
 <h2 align="center">
 <img src="/screenshot/b5.jpg" width="280" height="498" alt="关于作者"/>
 <img src="/screenshot/a01.png" width="280" height="498" alt="注册"/>
-<img src="/screenshot/a02.jpg" width="280" height="498" alt="侧滑抽屉"/>
+<img src="/screenshot/a02.jpg" width="280" height="498" alt="侧滑抽屉"/><br/>
 </h2>
-
 <h2 align="center">
 <img src="/screenshot/a1.jpg" width="280" height="498" alt="首页"/>
 <img src="/screenshot/a2.jpg" width="280" height="498" alt="体系"/>
- <img src="/screenshot/a3.jpg" width="280" height="498" alt="公众号"/>
+ <img src="/screenshot/a3.jpg" width="280" height="498" alt="公众号"/><br/>
 </h2>
-
 <h2 align="center">
 <img src="/screenshot/a4.jpg" width="280" height="498" alt="导航"/>
 <img src="/screenshot/a5.jpg" width="280" height="498" alt="项目"/>
-<img src="/screenshot/a6.jpg" width="280" height="498" alt="基础知识"/>
+<img src="/screenshot/a6.jpg" width="280" height="498" alt="基础知识"/><br/>
 </h2>
-
 <h2 align="center">
 <img src="/screenshot/a8.jpg" width="280" height="498" alt="我的收藏"/>
-<img src="/screenshot/a9.jpg" width="280" height="498" alt="详情页"/>
+<img src="/screenshot/a9.jpg" width="280" height="498" alt="详情页"/><br/>
 </h2>
 ## 感谢
 
