@@ -40,7 +40,8 @@
 
 
 ## 下载
-- Android扫描二维码下载
+
+- Android[点击下载](https://www.pgyer.com/haFL)，或者扫描下方二维码下载
 
   ![](screenshot/a7.png)
 
