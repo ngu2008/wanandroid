@@ -78,7 +78,7 @@
 
 | <img src="/screenshot/a8.jpg" width="280" height="498" alt="我的收藏"/> | <img src="/screenshot/a9.jpg" width="280" height="498" alt="详情页"/> |   |
 | :--: | :--: | :--: |
-| 首页 | 体系 |  |
+| 我的收藏 | 详情页 |  |
 
 
 
