@@ -62,12 +62,12 @@
 </h2>
 <h2 align="center">
 <img src="/screenshot/a0.png" width="280" height="498" alt="登录"/>
-<img src="/screenshot/b3.png" width="280" height="498" alt="常用网站"/>
+<img src="/screenshot/a01.png" width="280" height="498" alt="注册"/>
 <img src="/screenshot/b4.jpg" width="280" height="498" alt="分享"/><br/>
 </h2>
 <h2 align="center">
 <img src="/screenshot/b5.jpg" width="280" height="498" alt="关于作者"/>
-<img src="/screenshot/a01.png" width="280" height="498" alt="注册"/>
+<img src="/screenshot/b3.png" width="280" height="498" alt="常用网站"/>
 <img src="/screenshot/a02.jpg" width="280" height="498" alt="侧滑抽屉"/><br/>
 </h2>
 <h2 align="center">
