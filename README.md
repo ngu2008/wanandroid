@@ -58,7 +58,7 @@
 
 | <img src="/screenshot/b6.jpg" width="280" alt="福利，妹子图"/> | <img src="/screenshot/b2.jpg" width="280" alt="导航页"/> | <img src="/screenshot/b1.jpg" width="280" alt="导航页"/> |
 | :--: | :--: | :--: |
-| 福利，妹子图 | 导航页 |
+| 福利，妹子图 | 导航页 | 导航页 |
 
 | <img src="/screenshot/a0.png" width="280" height="498" alt="登录"/> | <img src="/screenshot/a01.png" width="280" height="498" alt="注册"/> | <img src="/screenshot/b4.jpg" width="280" height="498" alt="分享"/> |
 | :--: | :--: | :--: |
