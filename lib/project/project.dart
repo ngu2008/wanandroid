@@ -44,24 +44,29 @@ class ProjectPageState extends State<ProjectPage>
       length: _datas.length,
     );
     return Scaffold(
-        appBar: new AppBar(
-          centerTitle: true,
-          title: Text("项目"),
-          bottom: new TabBar(
-            controller: _tabController,
-            tabs: _datas.map((ProjectTreeData item) {
-              return Tab(
-                text: item.name,
-              );
-            }).toList(),
-            isScrollable: true,
-          ),
-        ),
-        body: TabBarView(
-          controller: _tabController,
-          children: _datas.map((item) {
-            return ProjectList(item.id);
-          }).toList(),
+        body: Column(
+          children: <Widget>[
+            Container(
+              color: const Color(0xFF5394FF),
+              height: 48,
+              child: TabBar(
+                labelStyle:TextStyle(fontSize: 16),
+                unselectedLabelStyle: TextStyle(fontSize: 16),
+                controller: _tabController,
+                tabs: _datas.map((ProjectTreeData item) {
+                  return Tab(text: item.name);
+                }).toList(),
+                isScrollable: true,
+              ),
+            ),
+            Expanded(
+                child: TabBarView(
+                  controller: _tabController,
+                  children: _datas.map((item) {
+                    return ProjectList(item.id);
+                  }).toList(),
+                ))
+          ],
         ));
   }
 }

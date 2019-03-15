@@ -51,7 +51,6 @@ class CommonWebsitePageState extends State<CommonWebsitePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("常用网站"),
-        centerTitle: true,
       ),
       body: RefreshIndicator(
         onRefresh: _getData,

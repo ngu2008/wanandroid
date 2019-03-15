@@ -5,6 +5,7 @@ import 'package:wanandroid_ngu/knowledge/knowledge.dart';
 import 'package:wanandroid_ngu/navigation/navigation.dart';
 import 'package:wanandroid_ngu/project/project.dart';
 import 'package:wanandroid_ngu/publicc/publicc.dart';
+import 'package:wanandroid_ngu/search/search.dart';
 
 //应用页面使用有状态Widget
 class App extends StatefulWidget {
@@ -18,10 +19,8 @@ class App extends StatefulWidget {
 class AppState extends State<App> {
   int _selectedIndex = 0; //当前选中项的索引
 
-  final appBarTitles = ['首页', '体系', '公众号', '导航', "项目"];
-
-  bool _showAppbar = true;
-  bool _showDrawer = true;
+  final appBarTitles = ['玩Android', '体系', '公众号', '导航', "项目"];
+  int elevation = 4;
 
   var pages = <Widget>[
     HomePage(),
@@ -36,11 +35,22 @@ class AppState extends State<App> {
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
-        drawer: _showDrawer ? DrawerPage() : null,
-        appBar:_showAppbar ? AppBar(
-          centerTitle: true,
+        drawer: DrawerPage(),
+        appBar: AppBar(
           title: new Text(appBarTitles[_selectedIndex]),
-        ):null,
+          bottom: null,
+          elevation: 0,
+          actions: <Widget>[
+            IconButton(
+                icon: Icon(Icons.search),
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(new MaterialPageRoute(builder: (context) {
+                    return new SearchPage();
+                  }));
+                })
+          ],
+        ),
         body: new IndexedStack(children: pages, index: _selectedIndex),
         //底部导航按钮 包含图标及文本
         bottomNavigationBar: BottomNavigationBar(
@@ -65,18 +75,11 @@ class AppState extends State<App> {
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
-      if (_selectedIndex == 0 || _selectedIndex == 1 || _selectedIndex == 3) {
-        _showAppbar = true;
+      if (index == 2 || index == 4) {
+        elevation = 0;
       } else {
-        _showAppbar = false;
+        elevation = 4;
       }
-
-      if (_selectedIndex == 0) {
-        _showDrawer = true;
-      } else {
-        _showDrawer = false;
-      }
-
     });
   }
 

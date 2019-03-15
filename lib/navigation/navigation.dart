@@ -49,7 +49,6 @@ class NavigationState extends State<NavigationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: RefreshIndicator(
         child: _rightListView(context),
         onRefresh: _getData,
@@ -109,8 +108,10 @@ class NavigationState extends State<NavigationPage> {
   }
 
   Widget buildChildren(List<NaviArticle> children) {
+
     List<Widget> tiles = []; //先建一个数组用于存放循环生成的widget
     Widget content; //单独一个widg
+
     for (NaviArticle item in children) {
       tiles.add(new InkWell(
         child: new Chip(

@@ -18,7 +18,6 @@ class AboutMePageState extends State<AboutMePage> {
     return new Scaffold(
         appBar: new AppBar(
           title: new Text("关于作者"),
-          centerTitle: true,
         ),
         body: new Container(
           padding: EdgeInsets.fromLTRB(35, 50, 35, 15),

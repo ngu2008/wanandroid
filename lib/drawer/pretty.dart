@@ -45,7 +45,6 @@ class PrettyPageState extends State<PrettyPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("妹子图"),
-        centerTitle: true,
       ),
       body: Container(
           child: PhotoViewGallery(

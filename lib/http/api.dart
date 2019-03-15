@@ -30,6 +30,7 @@ class Api{
   //常用网站
   static const String COMMON_WEBSITE = "https://www.wanandroid.com/friend/json";
 
+
   // 我的收藏-取消收藏
   static const String CANCEL_COLLECTION = "https://www.wanandroid.com/lg/uncollect/";
   

@@ -1,52 +1,50 @@
-import 'dart:convert' show json;
+class HotwordModel {
 
-class HotWordModel {
-
-  int errorCode;
   String errorMsg;
-  List<HotWordData> data;
+  int errorCode;
+  List<DataListBean> data;
 
-  HotWordModel.fromParams({this.errorCode, this.errorMsg, this.data});
+  static HotwordModel fromMap(Map<String, dynamic> map) {
+    HotwordModel hotword_model = new HotwordModel();
+    hotword_model.errorMsg = map['errorMsg'];
+    hotword_model.errorCode = map['errorCode'];
+    hotword_model.data = DataListBean.fromMapList(map['data']);
+    return hotword_model;
+  }
 
-  factory HotWordModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? new HotWordModel.fromJson(json.decode(jsonStr)) : new HotWordModel.fromJson(jsonStr);
-
-  HotWordModel.fromJson(jsonRes) {
-    errorCode = jsonRes['errorCode'];
-    errorMsg = jsonRes['errorMsg'];
-    data = jsonRes['data'] == null ? null : [];
-
-    for (var dataItem in data == null ? [] : jsonRes['data']){
-      data.add(dataItem == null ? null : new HotWordData.fromJson(dataItem));
+  static List<HotwordModel> fromMapList(dynamic mapList) {
+    List<HotwordModel> list = new List(mapList.length);
+    for (int i = 0; i < mapList.length; i++) {
+      list[i] = fromMap(mapList[i]);
     }
+    return list;
   }
 
-  @override
-  String toString() {
-    return '{"errorCode": $errorCode,"errorMsg": ${errorMsg != null?'${json.encode(errorMsg)}':'null'},"data": $data}';
-  }
 }
 
-class HotWordData {
+class DataListBean {
 
+  String link;
+  String name;
   int id;
   int order;
   int visible;
-  String link;
-  String name;
 
-  HotWordData.fromParams({this.id, this.order, this.visible, this.link, this.name});
-
-  HotWordData.fromJson(jsonRes) {
-    id = jsonRes['id'];
-    order = jsonRes['order'];
-    visible = jsonRes['visible'];
-    link = jsonRes['link'];
-    name = jsonRes['name'];
+  static DataListBean fromMap(Map<String, dynamic> map) {
+    DataListBean dataListBean = new DataListBean();
+    dataListBean.link = map['link'];
+    dataListBean.name = map['name'];
+    dataListBean.id = map['id'];
+    dataListBean.order = map['order'];
+    dataListBean.visible = map['visible'];
+    return dataListBean;
   }
 
-  @override
-  String toString() {
-    return '{"id": $id,"order": $order,"visible": $visible,"link": ${link != null?'${json.encode(link)}':'null'},"name": ${name != null?'${json.encode(name)}':'null'}}';
+  static List<DataListBean> fromMapList(dynamic mapList) {
+    List<DataListBean> list = new List(mapList.length);
+    for (int i = 0; i < mapList.length; i++) {
+      list[i] = fromMap(mapList[i]);
+    }
+    return list;
   }
 }
-

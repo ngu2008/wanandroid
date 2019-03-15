@@ -6,7 +6,7 @@ import 'package:wanandroid_ngu/model/banner_model.dart';
 import 'package:wanandroid_ngu/model/base_model.dart';
 import 'package:wanandroid_ngu/model/collection_model.dart';
 import 'package:wanandroid_ngu/model/common_websit_model.dart';
-import 'package:wanandroid_ngu/model/hotword_model.dart';
+import 'package:wanandroid_ngu/model/hotword_result_model.dart';
 import 'package:wanandroid_ngu/model/navi_model.dart';
 import 'package:wanandroid_ngu/model/pretty_model.dart';
 import 'package:wanandroid_ngu/model/projectlist_model.dart';
@@ -18,6 +18,7 @@ import 'package:wanandroid_ngu/model/user_model.dart';
 import 'package:wanandroid_ngu/model/website_collection_model.dart';
 import 'package:wanandroid_ngu/model/wx_article_content_model.dart';
 import 'package:wanandroid_ngu/model/wx_article_title_model.dart';
+import 'package:wanandroid_ngu/model/hotword_model.dart';
 
 import 'api.dart';
 
@@ -84,16 +85,16 @@ class CommonService{
   /// 获取搜索热词
   void getSearchHotWord(Function callback) async {
     DioManager.singleton.dio.get(Api.SEARCH_HOT_WORD, options: _getOptions()).then((response) {
-      callback(HotWordModel(response.data));
+      callback(HotwordModel.fromMap(response.data));
     });
   }
   /// 获取搜索结果
-  void getSearchResult(Function callback,int _page,String _id) async {
+  void getSearchResult(Function callback,int _page,String _keyword) async {
     FormData formData = new FormData.from({
-      "k": _id,
+      "k": _keyword,
     });
     DioManager.singleton.dio.post(Api.SEARCH_RESULT+"$_page/json", data: formData, options: _getOptions()).then((response) {
-      callback(ArticleModel(response.data));
+      callback(HotwordResultModel.fromMap(response.data));
     });
   }
 

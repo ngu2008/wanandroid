@@ -1,113 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:wanandroid_ngu/http/common_service.dart';
-import 'package:wanandroid_ngu/model/wx_article_content_model.dart';
-import 'package:wanandroid_ngu/model/wx_article_title_model.dart';
+import 'package:wanandroid_ngu/model/hotword_result_model.dart';
 import 'package:wanandroid_ngu/public_ui/webview_page.dart';
 
-class PubliccPage extends StatefulWidget {
+
+class HotResultPage extends StatefulWidget {
+
+  String hot;
+  HotResultPage(this.hot);
+
   @override
-  PubliccPageState createState() {
-    return new PubliccPageState();
+  State<StatefulWidget> createState() {
+    return HotResultPageState();
   }
+
 }
 
-class PubliccPageState extends State<PubliccPage>
-    with TickerProviderStateMixin {
-  List<WxArticleTitleData> _datas = new List();
-  TabController _tabController;
+class HotResultPageState extends State<HotResultPage>{
 
-  Future<Null> _getData() async {
-    CommonService().getWxList((WxArticleTitleModel _articleTitleModel) {
-      setState(() {
-        _datas = _articleTitleModel.data;
-      });
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _getData();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _tabController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    _tabController = new TabController(
-      vsync: this,
-      length: _datas.length,
-    );
-    return Scaffold(
-        body: Column(
-      children: <Widget>[
-        Container(
-          color: const Color(0xFF5394FF),
-          height: 48,
-          child: TabBar(
-            labelStyle:TextStyle(fontSize: 16),
-            unselectedLabelStyle: TextStyle(fontSize: 16),
-            controller: _tabController,
-            tabs: _datas.map((WxArticleTitleData item) {
-              return Tab(text: item.name);
-            }).toList(),
-            isScrollable: true,
-          ),
-        ),
-        Expanded(
-            child: TabBarView(
-          controller: _tabController,
-          children: _datas.map((item) {
-            return NewsList(item.id);
-          }).toList(),
-        ))
-      ],
-    ));
-  }
-}
-
-class NewsList extends StatefulWidget {
-  final int id;
-  NewsList(this.id);
-
-  @override
-  _NewsListState createState() {
-    return new _NewsListState();
-  }
-}
-
-class _NewsListState extends State<NewsList> {
-  List<WxArticleContentDatas> _datas = new List();
+  List<DatasListBean> _datas = new List();
   ScrollController _scrollController = ScrollController();
-  int _page = 1;
+  int _page = 0;
 
   bool showToTopBtn = false; //是否显示“返回到顶部”按钮
 
   Future<Null> _getData() async {
-    _page = 1;
-    int _id = widget.id;
-    CommonService().getWxArticleList(
-        (WxArticleContentModel _wxArticleContentModel) {
+    _page = 0;
+    String  _keyword = widget.hot;
+    CommonService().getSearchResult((HotwordResultModel otwordResultModel) {
       setState(() {
-        _datas = _wxArticleContentModel.data.datas;
+        _datas = otwordResultModel.data.datas;
       });
-    }, _id, _page);
+    }, _page, _keyword);
   }
 
   Future<Null> _getMore() async {
     _page++;
-    int _id = widget.id;
-    CommonService().getWxArticleList(
-        (WxArticleContentModel _articleContentModel) {
+    String  _keyword = widget.hot;
+    CommonService().getSearchResult((HotwordResultModel otwordResultModel) {
       setState(() {
-        _datas.addAll(_articleContentModel.data.datas);
+        _datas.addAll(otwordResultModel.data.datas);
       });
-    }, _id, _page);
+    }, _page, _keyword);
   }
 
   @override
@@ -141,14 +75,18 @@ class _NewsListState extends State<NewsList> {
     _scrollController.dispose();
   }
 
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+     return Scaffold(
+       appBar: AppBar(
+         title: Text(widget.hot),
+       ),
       body: RefreshIndicator(
         onRefresh: _getData,
         child: ListView.separated(
-            physics: new AlwaysScrollableScrollPhysics(),
             itemBuilder: _renderRow,
+            physics: new AlwaysScrollableScrollPhysics(),
             separatorBuilder: (BuildContext context, int index) {
               return Container(
                 height: 0.5,
@@ -159,16 +97,17 @@ class _NewsListState extends State<NewsList> {
             //包含加载更多
             itemCount: _datas.length + 1),
       ),
-      floatingActionButton: !showToTopBtn
-          ? null
-          : FloatingActionButton(
-              child: Icon(Icons.arrow_upward),
-              onPressed: () {
-                //返回到顶部时执行动画
-                _scrollController.animateTo(.0,
-                    duration: Duration(milliseconds: 200), curve: Curves.ease);
-              }),
-    );
+      floatingActionButton: !showToTopBtn ? null : FloatingActionButton(
+          child: Icon(Icons.arrow_upward),
+          onPressed: () {
+            //返回到顶部时执行动画
+            _scrollController.animateTo(.0,
+                duration: Duration(milliseconds: 200),
+                curve: Curves.ease
+            );
+          }
+      ),
+    );;
   }
 
   Widget _renderRow(BuildContext context, int index) {
@@ -177,7 +116,8 @@ class _NewsListState extends State<NewsList> {
         onTap: () {
           Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
             return new WebViewPage(
-                title: _datas[index].title, url: _datas[index].link);
+                title: _datas[index].title.replaceAll("<em class='highlight'>", "")
+                    .replaceAll("<\/em>", ""), url: _datas[index].link);
           }));
         },
         child: Column(
@@ -209,7 +149,8 @@ class _NewsListState extends State<NewsList> {
                 children: <Widget>[
                   Expanded(
                     child: Text(
-                      _datas[index].title,
+                      _datas[index].title .replaceAll("<em class='highlight'>", "")
+                  .replaceAll("<\/em>", ""),
                       maxLines: 2,
                       style: TextStyle(
                         fontSize: 16,
@@ -243,4 +184,5 @@ class _NewsListState extends State<NewsList> {
     }
     return null;
   }
+
 }

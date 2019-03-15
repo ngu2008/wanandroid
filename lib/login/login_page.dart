@@ -52,7 +52,6 @@ class _LoginPageState extends State<LoginPage>
     return new Scaffold(
       appBar: AppBar(
         title: Text(title),
-        centerTitle: true,
       ),
       key: _scaffoldKey,
       body: NotificationListener<OverscrollIndicatorNotification>(
