@@ -57,7 +57,7 @@
 ## 项目截图
 
 | <img src="/screenshot/b6.jpg" width="280" height="498" alt="福利，妹子图"/> | <img src="/screenshot/b2.jpg" width="280" height="498" alt="导航页"/> | <img src="/screenshot/b1.jpg" width="280" height="498" alt="导航页"/> |
-| :--: | :--: | :--: | :--: | :--: |
+| :--: | :--: | :--: |
 | 福利，妹子图 | 导航页 | 导航页 |
 
 <h2 align="center">
