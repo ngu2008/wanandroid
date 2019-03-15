@@ -42,9 +42,9 @@
 - 轮播图使用的是开源库[flutter_swiper](https://github.com/best-flutter/flutter_swiper)
 - 网络请求使用的是开源库[dio](https://github.com/flutterchina/dio)
 
-## 我的掘金主页
- - [点击打开](https://juejin.im/user/5b319afee51d455e2c32fb5b/posts)
-
+## 我的主页
+ - [掘金](https://juejin.im/user/5b319afee51d455e2c32fb5b/posts)
+ - [CSDN](https://blog.csdn.net/zw2008224044)
 
 ## 下载
 
@@ -54,7 +54,7 @@
 
 - 暂不支持IOS版本下载，请自行clone项目代码运行。
 
-## 项目截图
+## 应用截图
 
 | <img src="/screenshot/b6.jpg" width="280" alt="福利，妹子图"/> | <img src="/screenshot/b2.jpg" width="280" alt="导航页"/> | <img src="/screenshot/b1.jpg" width="280" alt="导航页"/> |
 | :--: | :--: | :--: |
