@@ -23,6 +23,11 @@
 
 ## 功能介绍
 
+#### V1.3版本
+
+- 新增搜索和搜索结果列表
+- 整个界面UI风格修改
+
 #### V1.2版本
 
 - 新增福利，妹子图，你懂得
@@ -76,18 +81,19 @@
 | :--: | :--: | :--: |
 | 导航 | 项目 | 基础知识 |
 
-| <img src="/screenshot/a8.jpg" width="280" height="498" alt="我的收藏"/> | <img src="/screenshot/a9.jpg" width="280" height="498" alt="详情页"/> |
-| :--: | :--: |
-| 我的收藏 | 详情页 |
+| <img src="/screenshot/a8.jpg" width="280" height="498" alt="我的收藏"/> | <img src="/screenshot/a9.jpg" width="280" height="498" alt="详情页"/> |<img src="/screenshot/a10.jpg" width="280" height="498" alt="详情页"/> |
+| :--: | :--: |:--: |
+| 我的收藏 | 详情页 | 热门搜索 |
 
-
+| <img src="/screenshot/a11.jpg" width="280" height="498" alt="搜索列表"/> |
+| :--: | :--: |:--: |
+| 搜索列表 |
 
 ##  感谢
 
 1. 特别感谢github开源作者[shijiacheng](https://github.com/shijiacheng/wanandroid_flutter)
 2. 感谢鸿洋大神及[玩Android官网](http://www.wanandroid.com/)提供的[开放API](http://www.wanandroid.com/blog/show/2)
 3. 感谢[干货集中营 API](http://gank.io/api)
-
 
 ## 使用开源库
 

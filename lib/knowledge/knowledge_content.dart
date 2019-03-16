@@ -40,7 +40,6 @@ class KnowledgeContentPageState extends State<KnowledgeContentPage>
         new TabController(length: _datas.children.length, vsync: this);
     return new Scaffold(
       appBar: new AppBar(
-        centerTitle: true,
         title: Text(_datas.name),
         bottom: new TabBar(
           controller: _tabController,

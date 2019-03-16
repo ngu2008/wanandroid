@@ -11,7 +11,6 @@ class MyCollections extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("我的收藏"),
-        centerTitle: true,
         elevation: 0.4,
       ),
       body: CollectionList(),

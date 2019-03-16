@@ -3,9 +3,7 @@ import 'package:wanandroid_ngu/http/common_service.dart';
 import 'package:wanandroid_ngu/model/hotword_result_model.dart';
 import 'package:wanandroid_ngu/public_ui/webview_page.dart';
 
-
 class HotResultPage extends StatefulWidget {
-
   String hot;
   HotResultPage(this.hot);
 
@@ -13,7 +11,6 @@ class HotResultPage extends StatefulWidget {
   State<StatefulWidget> createState() {
     return HotResultPageState();
   }
-
 }
 
 class HotResultPageState extends State<HotResultPage>{
@@ -29,7 +26,8 @@ class HotResultPageState extends State<HotResultPage>{
     String  _keyword = widget.hot;
     CommonService().getSearchResult((HotwordResultModel otwordResultModel) {
       setState(() {
-        _datas = otwordResultModel.data.datas;
+        _datas.clear();
+        _datas.addAll(otwordResultModel.data.datas);
       });
     }, _page, _keyword);
   }
@@ -48,6 +46,7 @@ class HotResultPageState extends State<HotResultPage>{
   void initState() {
     super.initState();
     _getData();
+
     _scrollController.addListener(() {
       if (_scrollController.position.pixels ==
           _scrollController.position.maxScrollExtent) {
@@ -74,7 +73,6 @@ class HotResultPageState extends State<HotResultPage>{
     super.dispose();
     _scrollController.dispose();
   }
-
 
   @override
   Widget build(BuildContext context) {
