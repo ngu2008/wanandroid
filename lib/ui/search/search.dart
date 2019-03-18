@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wanandroid_ngu/http/common_service.dart';
 import 'package:wanandroid_ngu/model/hotword_model.dart';
-import 'package:wanandroid_ngu/public_ui/webview_page.dart';
-import 'package:wanandroid_ngu/search/hot_search_result.dart';
+import 'package:wanandroid_ngu/ui/search/hot_search_result.dart';
 import 'package:wanandroid_ngu/util/utils.dart';
 
 class SearchPage extends StatefulWidget {
@@ -126,9 +125,6 @@ class SearchPageState extends State<SearchPage> {
           alignment: WrapAlignment.start,
           children: names,
         ));
-
-
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[

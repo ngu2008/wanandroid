@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wanandroid_ngu/public_ui/webview_page.dart';
+import 'package:wanandroid_ngu/ui/public_ui/webview_page.dart';
 
 class AboutMePage extends StatefulWidget {
   @override

@@ -1,32 +1,55 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:wanandroid_ngu/base/_base_widget.dart';
 import 'package:wanandroid_ngu/http/common_service.dart';
 import 'package:wanandroid_ngu/model/projectlist_model.dart';
 import 'package:wanandroid_ngu/model/project_tree_model.dart';
-import 'package:wanandroid_ngu/public_ui/webview_page.dart';
+import 'package:wanandroid_ngu/ui/public_ui/webview_page.dart';
 
-class ProjectPage extends StatefulWidget {
+class ProjectPage extends BaseWidget {
   @override
-  ProjectPageState createState() {
-    return new ProjectPageState();
+  BaseWidgetState<BaseWidget> getState() {
+    return ProjectPageState();
   }
+
 }
 
-class ProjectPageState extends State<ProjectPage>
+class ProjectPageState extends BaseWidgetState<ProjectPage>
     with TickerProviderStateMixin {
   List<ProjectTreeData> _datas = new List();
   TabController _tabController;
 
   Future<Null> _getData() async {
     CommonService().getProjectTree((ProjectTreeModel _projectTreeModel) {
-      setState(() {
-        _datas = _projectTreeModel.data;
-      });
-    });
+
+      if (_projectTreeModel.errorCode == 0) {
+        //成功
+        if (_projectTreeModel.data.length > 0) {
+          //有数据
+          showContent();
+          setState(() {
+            _datas = _projectTreeModel.data;
+          });
+        } else {
+          //数据为空
+          showEmpty();
+        }
+      } else {
+        Fluttertoast.showToast(msg: _projectTreeModel.errorMsg);
+      }
+
+    }, (DioError error) {
+        //发生错误
+        print(error.response);
+    showError();
+  });
   }
 
   @override
   void initState() {
     super.initState();
+    setAppBarVisible(false);
     _getData();
   }
 
@@ -37,8 +60,17 @@ class ProjectPageState extends State<ProjectPage>
     super.dispose();
   }
 
+
+
   @override
-  Widget build(BuildContext context) {
+  AppBar getAppBar() {
+    return AppBar(
+      title: Text("不显示"),
+    );
+  }
+
+  @override
+  Widget getContentWidget(BuildContext context) {
     _tabController = new TabController(
       vsync: this,
       length: _datas.length,
@@ -68,6 +100,12 @@ class ProjectPageState extends State<ProjectPage>
                 ))
           ],
         ));
+  }
+
+  @override
+  void onClickErrorWidget() {
+    showloading();
+    _getData();
   }
 }
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:wanandroid_ngu/http/common_service.dart';
-import 'package:wanandroid_ngu/public_ui/webview_page.dart';
-import '../model/banner_model.dart';
+import 'package:wanandroid_ngu/model/banner_model.dart';
+import 'package:wanandroid_ngu/ui/public_ui/webview_page.dart';
 
 class BannerWidget extends StatefulWidget {
   @override

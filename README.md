@@ -20,12 +20,33 @@
 
 - 根据[Flutter中文网](https://flutterchina.club/get-started/install)搭建开发环境，使用Android Studio安装Flutter插件，点击pubspec.yaml的package get，然后运行
 
+## App目录结构
+>- |--lib
+>    - |-- main (入口类)
+>    - |-- loading (启动页)
+>    - |-- splash_screen (引导页)
+>    - |-- util (工具类)
+>    - |-- base (基类类，封装基类BaseWidget和BaseWidgetState)
+>    - |-- http (网络请求相关类，)
+>    - |-- common (常用类，)
+>    - |-- event (事件类)
+>    - |-- model (实体类)
+>    - |-- ui (界面相关)
+>    - |-- util (工具类)
+
 
 ## 功能介绍
+
+#### V1.4版本
+
+- 封装基类BaseWidget和BaseWidgetState
+- 显示隐藏AppBar
+- 增加状态页切换（数据加载中，数据加载失败，空数据）
 
 #### V1.3版本
 
 - 新增搜索和搜索结果列表
+- 新增页面正在加载...使用[flutter_spinkit](https://github.com/jogboms/flutter_spinkit/tree/master/example)
 - 整个界面UI风格修改
 
 #### V1.2版本
@@ -97,6 +118,7 @@
 
 ## 使用开源库
 
+- [flutter_spinkit](https://github.com/jogboms/flutter_spinkit/tree/master/example)
 - [share](https://pub.flutter-io.cn/packages/share)
 - [flutter_swiper](https://pub.flutter-io.cn/packages/flutter_swiper)
 - [cupertino_icons](https://pub.flutter-io.cn/packages/cupertino_icons)

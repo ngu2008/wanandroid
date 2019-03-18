@@ -1,20 +1,22 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:wanandroid_ngu/base/_base_widget.dart';
 import 'package:wanandroid_ngu/http/common_service.dart';
 import 'package:wanandroid_ngu/model/hotword_result_model.dart';
-import 'package:wanandroid_ngu/public_ui/webview_page.dart';
+import 'package:wanandroid_ngu/ui/public_ui/webview_page.dart';
 
-class HotResultPage extends StatefulWidget {
+class HotResultPage extends BaseWidget {
   String hot;
   HotResultPage(this.hot);
 
   @override
-  State<StatefulWidget> createState() {
+  BaseWidgetState<BaseWidget> getState() {
     return HotResultPageState();
   }
 }
 
-class HotResultPageState extends State<HotResultPage>{
-
+class HotResultPageState extends BaseWidgetState<HotResultPage> {
   List<DatasListBean> _datas = new List();
   ScrollController _scrollController = ScrollController();
   int _page = 0;
@@ -23,28 +25,65 @@ class HotResultPageState extends State<HotResultPage>{
 
   Future<Null> _getData() async {
     _page = 0;
-    String  _keyword = widget.hot;
+    String _keyword = widget.hot;
     CommonService().getSearchResult((HotwordResultModel otwordResultModel) {
-      setState(() {
-        _datas.clear();
-        _datas.addAll(otwordResultModel.data.datas);
-      });
+
+      if (otwordResultModel.errorCode == 0) {
+        //成功
+        if (otwordResultModel.data.datas.length > 0) {
+          //有数据
+          showContent();
+          setState(() {
+            _datas.clear();
+            _datas.addAll(otwordResultModel.data.datas);
+          });
+          showEmpty();
+        } else {
+          //数据为空
+          showEmpty();
+        }
+      } else {
+        Fluttertoast.showToast(msg: otwordResultModel.errorMsg);
+      }
+    },(DioError error) {
+      //发生错误
+      print(error.response);
+      showError();
     }, _page, _keyword);
   }
 
   Future<Null> _getMore() async {
     _page++;
-    String  _keyword = widget.hot;
+    String _keyword = widget.hot;
     CommonService().getSearchResult((HotwordResultModel otwordResultModel) {
-      setState(() {
-        _datas.addAll(otwordResultModel.data.datas);
-      });
+
+      if (otwordResultModel.errorCode == 0) {
+        //成功
+        if (otwordResultModel.data.datas.length > 0) {
+          //有数据
+          showContent();
+          setState(() {
+            _datas.addAll(otwordResultModel.data.datas);
+          });
+        } else {
+          //数据为空
+          Fluttertoast.showToast(msg: "没有更多数据了");
+        }
+      } else {
+        Fluttertoast.showToast(msg: otwordResultModel.errorMsg);
+      }
+
+    },(DioError error) {
+      //发生错误
+      print(error.response);
+      showError();
     }, _page, _keyword);
   }
 
   @override
   void initState() {
     super.initState();
+    showloading();
     _getData();
 
     _scrollController.addListener(() {
@@ -74,48 +113,17 @@ class HotResultPageState extends State<HotResultPage>{
     _scrollController.dispose();
   }
 
-  @override
-  Widget build(BuildContext context) {
-     return Scaffold(
-       appBar: AppBar(
-         title: Text(widget.hot),
-       ),
-      body: RefreshIndicator(
-        onRefresh: _getData,
-        child: ListView.separated(
-            itemBuilder: _renderRow,
-            physics: new AlwaysScrollableScrollPhysics(),
-            separatorBuilder: (BuildContext context, int index) {
-              return Container(
-                height: 0.5,
-                color: Colors.black26,
-              );
-            },
-            controller: _scrollController,
-            //包含加载更多
-            itemCount: _datas.length + 1),
-      ),
-      floatingActionButton: !showToTopBtn ? null : FloatingActionButton(
-          child: Icon(Icons.arrow_upward),
-          onPressed: () {
-            //返回到顶部时执行动画
-            _scrollController.animateTo(.0,
-                duration: Duration(milliseconds: 200),
-                curve: Curves.ease
-            );
-          }
-      ),
-    );;
-  }
-
   Widget _renderRow(BuildContext context, int index) {
     if (index < _datas.length) {
       return new InkWell(
         onTap: () {
           Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
             return new WebViewPage(
-                title: _datas[index].title.replaceAll("<em class='highlight'>", "")
-                    .replaceAll("<\/em>", ""), url: _datas[index].link);
+                title: _datas[index]
+                    .title
+                    .replaceAll("<em class='highlight'>", "")
+                    .replaceAll("<\/em>", ""),
+                url: _datas[index].link);
           }));
         },
         child: Column(
@@ -147,8 +155,10 @@ class HotResultPageState extends State<HotResultPage>{
                 children: <Widget>[
                   Expanded(
                     child: Text(
-                      _datas[index].title .replaceAll("<em class='highlight'>", "")
-                  .replaceAll("<\/em>", ""),
+                      _datas[index]
+                          .title
+                          .replaceAll("<em class='highlight'>", "")
+                          .replaceAll("<\/em>", ""),
                       maxLines: 2,
                       style: TextStyle(
                         fontSize: 16,
@@ -183,4 +193,46 @@ class HotResultPageState extends State<HotResultPage>{
     return null;
   }
 
+  @override
+  AppBar getAppBar() {
+    return AppBar(
+      title: Text(widget.hot),
+    );
+  }
+
+  @override
+  Widget getContentWidget(BuildContext context) {
+    return Scaffold(
+      body: RefreshIndicator(
+        onRefresh: _getData,
+        child: ListView.separated(
+            itemBuilder: _renderRow,
+            physics: new AlwaysScrollableScrollPhysics(),
+            separatorBuilder: (BuildContext context, int index) {
+              return Container(
+                height: 0.5,
+                color: Colors.black26,
+              );
+            },
+            controller: _scrollController,
+            //包含加载更多
+            itemCount: _datas.length + 1),
+      ),
+      floatingActionButton: !showToTopBtn
+          ? null
+          : FloatingActionButton(
+          child: Icon(Icons.arrow_upward),
+          onPressed: () {
+            //返回到顶部时执行动画
+            _scrollController.animateTo(.0,
+                duration: Duration(milliseconds: 200), curve: Curves.ease);
+          }),
+    );
+  }
+
+  @override
+  void onClickErrorWidget() {
+    showloading();
+    _getData();
+  }
 }

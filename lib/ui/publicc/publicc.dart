@@ -1,32 +1,54 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:wanandroid_ngu/base/_base_widget.dart';
 import 'package:wanandroid_ngu/http/common_service.dart';
 import 'package:wanandroid_ngu/model/wx_article_content_model.dart';
 import 'package:wanandroid_ngu/model/wx_article_title_model.dart';
-import 'package:wanandroid_ngu/public_ui/webview_page.dart';
+import 'package:wanandroid_ngu/ui/public_ui/webview_page.dart';
 
-class PubliccPage extends StatefulWidget {
+class PubliccPage extends BaseWidget {
   @override
-  PubliccPageState createState() {
-    return new PubliccPageState();
+  BaseWidgetState<BaseWidget> getState() {
+    return PubliccPageState();
   }
 }
 
-class PubliccPageState extends State<PubliccPage>
+class PubliccPageState extends BaseWidgetState<PubliccPage>
     with TickerProviderStateMixin {
   List<WxArticleTitleData> _datas = new List();
   TabController _tabController;
 
   Future<Null> _getData() async {
     CommonService().getWxList((WxArticleTitleModel _articleTitleModel) {
-      setState(() {
-        _datas = _articleTitleModel.data;
-      });
+
+      if (_articleTitleModel.errorCode == 0) {
+        //成功
+        if (_articleTitleModel.data.length > 0) {
+          //有数据
+          showContent();
+          setState(() {
+            _datas = _articleTitleModel.data;
+          });
+        } else {
+          //数据为空
+          showEmpty();
+        }
+      } else {
+        Fluttertoast.showToast(msg: _articleTitleModel.errorMsg);
+      }
+
+    }, (DioError error) {
+      //发生错误
+      print(error.response);
+      showError();
     });
   }
 
   @override
   void initState() {
     super.initState();
+    setAppBarVisible(false);
     _getData();
   }
 
@@ -37,37 +59,51 @@ class PubliccPageState extends State<PubliccPage>
     super.dispose();
   }
 
+
   @override
-  Widget build(BuildContext context) {
+  AppBar getAppBar() {
+    return AppBar(
+      title: Text("不显示"),
+    );
+  }
+
+  @override
+  Widget getContentWidget(BuildContext context) {
     _tabController = new TabController(
       vsync: this,
       length: _datas.length,
     );
     return Scaffold(
         body: Column(
-      children: <Widget>[
-        Container(
-          color: const Color(0xFF5394FF),
-          height: 48,
-          child: TabBar(
-            labelStyle:TextStyle(fontSize: 16),
-            unselectedLabelStyle: TextStyle(fontSize: 16),
-            controller: _tabController,
-            tabs: _datas.map((WxArticleTitleData item) {
-              return Tab(text: item.name);
-            }).toList(),
-            isScrollable: true,
-          ),
-        ),
-        Expanded(
-            child: TabBarView(
-          controller: _tabController,
-          children: _datas.map((item) {
-            return NewsList(item.id);
-          }).toList(),
-        ))
-      ],
-    ));
+          children: <Widget>[
+            Container(
+              color: const Color(0xFF5394FF),
+              height: 48,
+              child: TabBar(
+                labelStyle:TextStyle(fontSize: 16),
+                unselectedLabelStyle: TextStyle(fontSize: 16),
+                controller: _tabController,
+                tabs: _datas.map((WxArticleTitleData item) {
+                  return Tab(text: item.name);
+                }).toList(),
+                isScrollable: true,
+              ),
+            ),
+            Expanded(
+                child: TabBarView(
+                  controller: _tabController,
+                  children: _datas.map((item) {
+                    return NewsList(item.id);
+                  }).toList(),
+                ))
+          ],
+        ));
+  }
+
+  @override
+  void onClickErrorWidget() {
+    showloading();
+    _getData();
   }
 }
 

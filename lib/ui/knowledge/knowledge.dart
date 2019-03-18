@@ -1,18 +1,20 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:wanandroid_ngu/base/_base_widget.dart';
 import 'package:wanandroid_ngu/http/common_service.dart';
-import 'package:wanandroid_ngu/knowledge/knowledge_content.dart';
 import 'package:wanandroid_ngu/model/system_tree_model.dart';
-import 'package:wanandroid_ngu/public_ui/webview_page.dart';
+import 'package:wanandroid_ngu/ui/knowledge/knowledge_content.dart';
 import 'package:wanandroid_ngu/util/utils.dart';
 
-class KnowledgePage extends StatefulWidget {
+class KnowledgePage extends BaseWidget {
   @override
-  KnowledgePageState createState() {
-    return new KnowledgePageState();
+  BaseWidgetState<BaseWidget> getState() {
+    return KnowledgePageState();
   }
 }
 
-class KnowledgePageState extends State<KnowledgePage> {
+class KnowledgePageState extends BaseWidgetState<KnowledgePage> {
   List<SystemTreeData> _datas = new List();
   //listview控制器
   ScrollController _scrollController = ScrollController();
@@ -21,6 +23,7 @@ class KnowledgePageState extends State<KnowledgePage> {
   @override
   void initState() {
     super.initState();
+    setAppBarVisible(false);
     _getData();
 
     _scrollController.addListener(() {
@@ -39,41 +42,27 @@ class KnowledgePageState extends State<KnowledgePage> {
 
   Future<Null> _getData() async {
     CommonService().getSystemTree((SystemTreeModel _systemTreeModel) {
-      setState(() {
-        _datas = _systemTreeModel.data;
-      });
+      if (_systemTreeModel.errorCode == 0) {
+        //成功
+        if (_systemTreeModel.data.length > 0) {
+          //有数据
+          showContent();
+          setState(() {
+            _datas.clear();
+            _datas.addAll(_systemTreeModel.data);
+          });
+        } else {
+          //数据为空
+          showEmpty();
+        }
+      } else {
+        Fluttertoast.showToast(msg: _systemTreeModel.errorMsg);
+      }
+    },(DioError error) {
+      //发生错误
+      print(error.response);
+      showError();
     });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      body: RefreshIndicator(
-        onRefresh: _getData,
-        child: ListView.separated(
-          itemBuilder: _renderRow,
-          physics: new AlwaysScrollableScrollPhysics(),
-          separatorBuilder: (BuildContext context, int index) {
-            return Container(
-              height: 0.5,
-              color: Colors.black26,
-            );
-          },
-          itemCount: _datas.length,
-          controller: _scrollController,
-        ),
-      ),
-      floatingActionButton: !showToTopBtn ? null : FloatingActionButton(
-          child: Icon(Icons.arrow_upward),
-          onPressed: () {
-            //返回到顶部时执行动画
-            _scrollController.animateTo(.0,
-                duration: Duration(milliseconds: 200),
-                curve: Curves.ease
-            );
-          }
-      ),
-    );
   }
 
   Widget _renderRow(BuildContext context, int index) {
@@ -150,4 +139,49 @@ class KnowledgePageState extends State<KnowledgePage> {
     super.dispose();
     _scrollController.dispose();
   }
+
+  @override
+  AppBar getAppBar() {
+    return AppBar(
+      title: Text("不显示"),
+    );
+  }
+
+  @override
+  Widget getContentWidget(BuildContext context) {
+    return Scaffold(
+      body: RefreshIndicator(
+        onRefresh: _getData,
+        child: ListView.separated(
+          itemBuilder: _renderRow,
+          physics: new AlwaysScrollableScrollPhysics(),
+          separatorBuilder: (BuildContext context, int index) {
+            return Container(
+              height: 0.5,
+              color: Colors.black26,
+            );
+          },
+          itemCount: _datas.length,
+          controller: _scrollController,
+        ),
+      ),
+      floatingActionButton: !showToTopBtn ? null : FloatingActionButton(
+          child: Icon(Icons.arrow_upward),
+          onPressed: () {
+            //返回到顶部时执行动画
+            _scrollController.animateTo(.0,
+                duration: Duration(milliseconds: 200),
+                curve: Curves.ease
+            );
+          }
+      ),
+    );
+  }
+
+  @override
+  void onClickErrorWidget() {
+    showloading();
+    _getData();
+  }
+
 }

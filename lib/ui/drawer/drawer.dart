@@ -1,17 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:share/share.dart';
 import 'package:wanandroid_ngu/common/application.dart';
 import 'package:wanandroid_ngu/common/user.dart';
-import 'package:wanandroid_ngu/drawer/about.dart';
-import 'package:wanandroid_ngu/drawer/common_website.dart';
-import 'package:wanandroid_ngu/drawer/my_collections.dart';
-import 'package:wanandroid_ngu/drawer/pretty.dart';
-import 'package:wanandroid_ngu/drawer/setting.dart';
 import 'package:wanandroid_ngu/event/login_event.dart';
-import 'package:wanandroid_ngu/login/login_page.dart';
-import 'package:wanandroid_ngu/public_ui/webview_page.dart';
-import 'package:share/share.dart';
+import 'package:wanandroid_ngu/ui/drawer/about.dart';
+import 'package:wanandroid_ngu/ui/drawer/collctions.dart';
+import 'package:wanandroid_ngu/ui/drawer/common_website.dart';
+import 'package:wanandroid_ngu/ui/drawer/pretty.dart';
+import 'package:wanandroid_ngu/ui/drawer/setting.dart';
+import 'package:wanandroid_ngu/ui/login/login_page.dart';
 
 class DrawerPage extends StatefulWidget {
   @override
@@ -187,7 +185,7 @@ class DrawerPageState extends State<DrawerPage> {
 
   void onCollectionClick() async {
     await Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
-      return new MyCollections();
+      return new CollectionsPage();
     }));
   }
 

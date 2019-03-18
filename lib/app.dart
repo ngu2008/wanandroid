@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:wanandroid_ngu/drawer/drawer.dart';
-import 'package:wanandroid_ngu/home/home_page.dart';
-import 'package:wanandroid_ngu/knowledge/knowledge.dart';
-import 'package:wanandroid_ngu/navigation/navigation.dart';
-import 'package:wanandroid_ngu/project/project.dart';
-import 'package:wanandroid_ngu/publicc/publicc.dart';
-import 'package:wanandroid_ngu/search/search.dart';
+import 'package:wanandroid_ngu/ui/drawer/drawer.dart';
+import 'package:wanandroid_ngu/ui/home/home_page.dart';
+import 'package:wanandroid_ngu/ui/knowledge/knowledge.dart';
+import 'package:wanandroid_ngu/ui/navigation/navigation.dart';
+import 'package:wanandroid_ngu/ui/project/project.dart';
+import 'package:wanandroid_ngu/ui/publicc/publicc.dart';
+import 'package:wanandroid_ngu/ui/search/search.dart';
+
 
 //应用页面使用有状态Widget
 class App extends StatefulWidget {

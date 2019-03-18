@@ -6,7 +6,7 @@ import 'package:wanandroid_ngu/common/application.dart';
 import 'package:wanandroid_ngu/common/user.dart';
 import 'package:wanandroid_ngu/event/login_event.dart';
 import 'package:wanandroid_ngu/http/common_service.dart';
-import 'package:wanandroid_ngu/login/theme.dart' as Theme;
+import 'package:wanandroid_ngu/ui/login/theme.dart' as Theme;
 import 'package:wanandroid_ngu/model/user_model.dart';
 import 'package:wanandroid_ngu/util/bubble_indication_painter.dart';
 import 'package:fluttertoast/fluttertoast.dart';

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:intro_slider/intro_slider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wanandroid_ngu/app.dart';
 class SplashScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-
     return new SplashScreenState() ;
   }
 
@@ -71,6 +71,7 @@ class SplashScreenState extends State<SplashScreen> {
   }
 
   void onDonePress() {
+    _setHasSkip();
     Navigator.of(context).pushAndRemoveUntil(
         new MaterialPageRoute(
             builder: (context) => App()),
@@ -78,10 +79,16 @@ class SplashScreenState extends State<SplashScreen> {
   }
 
   void onSkipPress() {
+    _setHasSkip();
     Navigator.of(context).pushAndRemoveUntil(
         new MaterialPageRoute(
             builder: (context) => App()),
             (route) => route == null);
+  }
+
+  void _setHasSkip ()async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool("hasSkip", true);
   }
 
 

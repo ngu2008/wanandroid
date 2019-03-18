@@ -1,17 +1,20 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:wanandroid_ngu/base/_base_widget.dart';
 import 'package:wanandroid_ngu/http/common_service.dart';
 import 'package:wanandroid_ngu/model/navi_model.dart';
-import 'package:wanandroid_ngu/public_ui/webview_page.dart';
+import 'package:wanandroid_ngu/ui/public_ui/webview_page.dart';
 import 'package:wanandroid_ngu/util/utils.dart';
 
-class NavigationPage extends StatefulWidget {
+class NavigationPage extends BaseWidget {
   @override
-  NavigationState createState() {
-    return new NavigationState();
+  BaseWidgetState<BaseWidget> getState() {
+    return NavigationState();
   }
 }
 
-class NavigationState extends State<NavigationPage> {
+class NavigationState extends BaseWidgetState<NavigationPage> {
   List<NaviData> _naviTitles = new List();
   //listview控制器
   ScrollController _scrollController = ScrollController();
@@ -20,7 +23,9 @@ class NavigationState extends State<NavigationPage> {
   @override
   void initState() {
     super.initState();
+    setAppBarVisible(false);
     _getData();
+
     _scrollController.addListener(() {
       _scrollController.addListener(() {
         //当前位置是否超过屏幕高度
@@ -39,31 +44,31 @@ class NavigationState extends State<NavigationPage> {
 
   Future<Null> _getData() async {
     CommonService().getNaviList((NaviModel _naviData) {
-      setState(() {
-        _naviTitles = _naviData.data;
-      });
+
+      if (_naviData.errorCode == 0) {
+        //成功
+        if (_naviData.data.length > 0) {
+          //有数据
+          showContent();
+          setState(() {
+            _naviTitles = _naviData.data;
+          });
+        } else {
+          //数据为空
+          showEmpty();
+        }
+      } else {
+        Fluttertoast.showToast(msg: _naviData.errorMsg);
+      }
+
+    },(DioError error) {
+      //发生错误
+      print(error.response);
+      showError();
     });
   }
 
-  // _rightListView(context)
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: RefreshIndicator(
-        child: _rightListView(context),
-        onRefresh: _getData,
-      ),
-      floatingActionButton: !showToTopBtn
-          ? null
-          : FloatingActionButton(
-              child: Icon(Icons.arrow_upward),
-              onPressed: () {
-                //返回到顶部时执行动画
-                _scrollController.animateTo(.0,
-                    duration: Duration(milliseconds: 200), curve: Curves.ease);
-              }),
-    );
-  }
+
 
   Widget _rightListView(BuildContext context) {
     return ListView.separated(
@@ -132,5 +137,38 @@ class NavigationState extends State<NavigationPage> {
       children: tiles,
     );
     return content;
+  }
+
+  @override
+  AppBar getAppBar() {
+    return AppBar(
+      title: Text("不显示"),
+    );
+  }
+
+
+  @override
+  Widget getContentWidget(BuildContext context) {
+    return Scaffold(
+      body: RefreshIndicator(
+        child: _rightListView(context),
+        onRefresh: _getData,
+      ),
+      floatingActionButton: !showToTopBtn
+          ? null
+          : FloatingActionButton(
+          child: Icon(Icons.arrow_upward),
+          onPressed: () {
+            //返回到顶部时执行动画
+            _scrollController.animateTo(.0,
+                duration: Duration(milliseconds: 200), curve: Curves.ease);
+          }),
+    );
+  }
+
+  @override
+  void onClickErrorWidget() {
+    showloading();
+    _getData();
   }
 }

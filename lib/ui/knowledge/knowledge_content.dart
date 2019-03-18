@@ -1,8 +1,11 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:wanandroid_ngu/base/_base_widget.dart';
 import 'package:wanandroid_ngu/http/common_service.dart';
 import 'package:wanandroid_ngu/model/system_tree_content_model.dart';
 import 'package:wanandroid_ngu/model/system_tree_model.dart';
-import 'package:wanandroid_ngu/public_ui/webview_page.dart';
+import 'package:wanandroid_ngu/ui/public_ui/webview_page.dart';
 
 class KnowledgeContentPage extends StatefulWidget {
   SystemTreeData data;
@@ -42,7 +45,7 @@ class KnowledgeContentPageState extends State<KnowledgeContentPage>
       appBar: new AppBar(
         title: Text(_datas.name),
         bottom: new TabBar(
-          controller: _tabController,
+            controller: _tabController,
             isScrollable: true,
             tabs: _datas.children.map((SystemTreeChild item) {
               return Tab(
@@ -54,7 +57,7 @@ class KnowledgeContentPageState extends State<KnowledgeContentPage>
         controller: _tabController,
         children: _datas.children.map((item) {
           return NewsList(
-            id: item.id,
+            item.id,
           );
         }).toList(),
       ),
@@ -63,22 +66,25 @@ class KnowledgeContentPageState extends State<KnowledgeContentPage>
 }
 
 //知识体系文章列表
-class NewsList extends StatefulWidget {
-  final int id; //知识体系id
-  @override
-  NewsList({Key key, this.id}) : super(key: key);
+class NewsList extends BaseWidget {
+  final int id;
+  NewsList(this.id);
 
-  _NewsListState createState() => new _NewsListState();
+  @override
+  BaseWidgetState<BaseWidget> getState() {
+    return _NewsListState();
+  } //知识体系id
 }
 
-class _NewsListState extends State<NewsList> {
+class _NewsListState extends BaseWidgetState<NewsList> {
   List<SystemTreeContentChild> _datas = new List();
   ScrollController _scrollController = ScrollController(); //listview的控制器
   int _page = 0;
 
   @override
   void initState() {
-    super.initState();
+    setAppBarVisible(false);
+    showloading();
     getData();
     _scrollController.addListener(() {
       if (_scrollController.position.pixels ==
@@ -91,11 +97,29 @@ class _NewsListState extends State<NewsList> {
   Future<Null> getData() async {
     _page = 0;
     int _id = widget.id;
+
     CommonService().getSystemTreeContent(
         (SystemTreeContentModel _systemTreeContentModel) {
-      setState(() {
-        _datas = _systemTreeContentModel.data.datas;
-      });
+
+          if (_systemTreeContentModel.errorCode == 0) {
+            //成功
+            if (_systemTreeContentModel.data.datas.length > 0) {
+              //有数据
+              showContent();
+              setState(() {
+                _datas = _systemTreeContentModel.data.datas;
+              });
+            } else {
+              //数据为空
+              showEmpty();
+            }
+          } else {
+            Fluttertoast.showToast(msg: _systemTreeContentModel.errorMsg);
+          }
+    },(DioError error) {
+      //发生错误
+      print(error.response);
+      showError();
     }, _page, _id);
   }
 
@@ -105,40 +129,36 @@ class _NewsListState extends State<NewsList> {
 
     CommonService().getSystemTreeContent(
         (SystemTreeContentModel _systemTreeContentModel) {
-      setState(() {
-        _datas.addAll(_systemTreeContentModel.data.datas);
-      });
+
+          if (_systemTreeContentModel.errorCode == 0) {
+            //成功
+            if (_systemTreeContentModel.data.datas.length > 0) {
+              //有数据
+              showContent();
+              setState(() {
+                _datas.addAll(_systemTreeContentModel.data.datas);
+              });
+            } else {
+              //数据为空
+              Fluttertoast.showToast(msg: "没有更多数据了");
+            }
+          } else {
+            Fluttertoast.showToast(msg: _systemTreeContentModel.errorMsg);
+          }
+    },(DioError error) {
+      //发生错误
+      print(error.response);
+      showError();
     }, _page, _id);
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      body: RefreshIndicator(
-        onRefresh: getData,
-        child: ListView.separated(
-          physics: new AlwaysScrollableScrollPhysics(),
-          itemBuilder: _renderRow,
-          itemCount: _datas.length + 1,
-          controller: _scrollController,
-          separatorBuilder: (BuildContext context, int index) {
-            return Container(
-              height: 0.5,
-              color: Colors.black26,
-            );
-          },
-        ),
-      ),
-    );
-  } //加载的页数
-
   Widget _renderRow(BuildContext context, int index) {
-    if(index<_datas.length){
-      return  InkWell(
+    if (index < _datas.length) {
+      return InkWell(
         child: Container(
-          child:  _newsRow(_datas[index]),
+          child: _newsRow(_datas[index]),
         ),
-        onTap: (){
+        onTap: () {
           Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
             return new WebViewPage(
                 title: _datas[index].title, url: _datas[index].link);
@@ -180,10 +200,13 @@ class _NewsListState extends State<NewsList> {
                 children: <Widget>[
                   Expanded(
                       child: Text(
-                        item.title,
-                        style: TextStyle(fontSize: 16, color: const Color(0xFF3D4E5F),fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.left,
-                      ))
+                    item.title,
+                    style: TextStyle(
+                        fontSize: 16,
+                        color: const Color(0xFF3D4E5F),
+                        fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.left,
+                  ))
                 ],
               )),
           Container(
@@ -204,5 +227,37 @@ class _NewsListState extends State<NewsList> {
         ],
       ),
     );
+  }
+
+  @override
+  AppBar getAppBar() {
+    return AppBar(
+      title: Text("不显示"),
+    );
+  }
+
+  @override
+  Widget getContentWidget(BuildContext context) {
+    return RefreshIndicator(
+      onRefresh: getData,
+      child: ListView.separated(
+        physics: new AlwaysScrollableScrollPhysics(),
+        itemBuilder: _renderRow,
+        itemCount: _datas.length + 1,
+        controller: _scrollController,
+        separatorBuilder: (BuildContext context, int index) {
+          return Container(
+            height: 0.5,
+            color: Colors.black26,
+          );
+        },
+      ),
+    );
+  }
+
+  @override
+  void onClickErrorWidget() {
+    showloading();
+    getData();
   }
 }
