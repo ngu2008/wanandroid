@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import 'package:wanandroid_ngu/util/theme_util.dart';
 
 class WebViewPage extends StatefulWidget {
   String title;
@@ -24,7 +25,6 @@ class WebViewPageState extends State<WebViewPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     flutterWebviewPlugin.onStateChanged.listen((state) {
       debugPrint("state:_" + state.type.toString());
       if (state.type == WebViewState.finishLoad) {
@@ -49,7 +49,7 @@ class WebViewPageState extends State<WebViewPage> {
         elevation: 0.4,
         title: new Text(widget.title),
         bottom: new PreferredSize(
-            child: isLoad?new LinearProgressIndicator():new Divider(height: 1.0,color: Theme.of(context).primaryColor) ,
+            child: isLoad?new LinearProgressIndicator():new Divider(height: 1.0,color: ThemeUtils.currentColorTheme ),
             preferredSize: const Size.fromHeight(1.0),
         ),
       ),

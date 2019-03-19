@@ -115,27 +115,29 @@ class DrawerPageState extends State<DrawerPage> {
             leading: Icon(Icons.settings, size: 22.0),
             onTap: () {
               showDialog(
-                  context: context,
-                  child: new SimpleDialog(
-                    contentPadding: EdgeInsets.all(10.0),
-                    title: new Text("设置主题"),
+                context: context,
+                builder: (BuildContext context) {
+                  return new SimpleDialog(
+                    title: Text("设置主题"),
                     children: ThemeUtils.supportColors.map((Color color) {
-                      return InkWell(
-                        onTap: () {
-                          ThemeUtils.currentColorTheme = color;
-                          Utils.setColorTheme(ThemeUtils.supportColors.indexOf(color));
-                          changeColorTheme(color);
-                        },
-                        child: Padding(
+                      return new SimpleDialogOption(
+                        child: Container(
                           padding: EdgeInsets.fromLTRB(10, 8, 10, 8),
-                          child: Container(
-                            height: 35,
-                            color: color,
-                          ),
+                          height: 35,
+                          color: color,
                         ),
+                        onPressed: () {
+                          ThemeUtils.currentColorTheme = color;
+                          Utils.setColorTheme(
+                              ThemeUtils.supportColors.indexOf(color));
+                          changeColorTheme(color);
+                          Navigator.of(context).pop();
+                        },
                       );
                     }).toList(),
-                  ));
+                  );
+                },
+              );
             },
           ),
           ListTile(
