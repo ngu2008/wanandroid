@@ -1,8 +1,12 @@
 import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:lpinyin/lpinyin.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Utils {
+
+  static final String SP_COLOR_THEME_INDEX = "colorThemeIndex";
+
   static String getImgPath(String name, {String format: 'png'}) {
     return 'assets/images/$name.$format';
   }
@@ -50,8 +54,16 @@ class Utils {
     return (count >= 10 || title.length > 16) ? 14.0 : 18.0;
   }
 
-  /// 0
-  /// -1
-  /// 1
+  // 设置选择的主题色
+  static setColorTheme(int colorThemeIndex) async {
+    SharedPreferences sp = await SharedPreferences.getInstance();
+    sp.setInt(SP_COLOR_THEME_INDEX, colorThemeIndex);
+  }
+
+  static Future<int> getColorThemeIndex() async {
+    SharedPreferences sp = await SharedPreferences.getInstance();
+    return sp.getInt(SP_COLOR_THEME_INDEX);
+  }
+
 
 }

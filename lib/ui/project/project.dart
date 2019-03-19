@@ -2,10 +2,13 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:wanandroid_ngu/base/_base_widget.dart';
+import 'package:wanandroid_ngu/common/application.dart';
+import 'package:wanandroid_ngu/event/change_theme_event.dart';
 import 'package:wanandroid_ngu/http/common_service.dart';
 import 'package:wanandroid_ngu/model/projectlist_model.dart';
 import 'package:wanandroid_ngu/model/project_tree_model.dart';
 import 'package:wanandroid_ngu/ui/public_ui/webview_page.dart';
+import 'package:wanandroid_ngu/util/theme_util.dart';
 
 class ProjectPage extends BaseWidget {
   @override
@@ -17,6 +20,8 @@ class ProjectPage extends BaseWidget {
 
 class ProjectPageState extends BaseWidgetState<ProjectPage>
     with TickerProviderStateMixin {
+
+  Color themeColor = ThemeUtils.currentColorTheme;
   List<ProjectTreeData> _datas = new List();
   TabController _tabController;
 
@@ -51,6 +56,11 @@ class ProjectPageState extends BaseWidgetState<ProjectPage>
     super.initState();
     setAppBarVisible(false);
     _getData();
+    Application.eventBus.on<ChangeThemeEvent>().listen((event) {
+      setState(() {
+        themeColor = event.color;
+      });
+    });
   }
 
   @override
@@ -79,9 +89,10 @@ class ProjectPageState extends BaseWidgetState<ProjectPage>
         body: Column(
           children: <Widget>[
             Container(
-              color: const Color(0xFF5394FF),
+              color: themeColor,
               height: 48,
               child: TabBar(
+                indicatorColor: Colors.white,
                 labelStyle:TextStyle(fontSize: 16),
                 unselectedLabelStyle: TextStyle(fontSize: 16),
                 controller: _tabController,

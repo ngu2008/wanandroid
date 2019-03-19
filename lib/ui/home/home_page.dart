@@ -21,6 +21,7 @@ class HomePageState extends BaseWidgetState<HomePage> {
   bool showToTopBtn = false; //是否显示“返回到顶部”按钮
   int _page = 0;
 
+
   @override
   void initState() {
     super.initState();

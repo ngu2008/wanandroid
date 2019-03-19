@@ -39,6 +39,7 @@
 
 #### V1.4版本
 
+- 增加切换主题
 - 封装基类BaseWidget和BaseWidgetState
 - 显示隐藏AppBar
 - 增加状态页切换（数据加载中，数据加载失败，空数据）
@@ -110,9 +111,9 @@
 | :--: | :--: |:--: |
 | 搜索列表 | 正在加载 |加载错误 |
 
-| <img src="/screenshot/b9.png" width="280" height="498" alt="正在加载"/>| | |
+| <img src="/screenshot/b9.png" width="280" height="498" alt="正在加载"/>| <img src="/screenshot/b10.png" width="280" height="498" alt="正在加载"/> | |
 | :--: | :--: |:--: |
-| 数据为空 |  |  |
+| 数据为空 | 切换主题 |  |
 
 ##  感谢
 

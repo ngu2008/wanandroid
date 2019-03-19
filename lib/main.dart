@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:wanandroid_ngu/common/application.dart';
 import 'package:wanandroid_ngu/common/user.dart';
+import 'package:wanandroid_ngu/event/change_theme_event.dart';
 import 'package:wanandroid_ngu/splash_screen.dart';
+import 'package:wanandroid_ngu/util/theme_util.dart';
+import 'package:wanandroid_ngu/util/utils.dart';
 import './app.dart';
 import './loading.dart';
 import 'dart:io';
@@ -15,22 +19,54 @@ void main() {
         SystemUiOverlayStyle(statusBarColor: Colors.transparent);
     SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
   }
+
 }
 
 Future<Null> getLoginInfo() async {
   User.singleton.getUserInfo();
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return MyAppState();
+  }
+
+}
+
+class MyAppState extends State<MyApp>{
+
+  Color themeColor = ThemeUtils.currentColorTheme;
+
+  @override
+  void initState() {
+    super.initState();
+    Utils.getColorThemeIndex().then((index) {
+      print('color theme index = $index');
+      if (index != null) {
+        ThemeUtils.currentColorTheme = ThemeUtils.supportColors[index];
+        Application.eventBus.fire(new ChangeThemeEvent(ThemeUtils.supportColors[index]));
+      }
+    });
+
+    Application.eventBus.on<ChangeThemeEvent>().listen((event) {
+      setState(() {
+        themeColor = event.color;
+      });
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "玩Android",
       debugShowCheckedModeBanner: false,
       theme: new ThemeData(
-        primaryColor: const Color(0xFF5394FF),
-        scaffoldBackgroundColor: Color(0xFFFFFFFF),
-        accentColor: const Color(0xFF5394FF),
+        primaryColor: themeColor,
+        brightness: Brightness.light
+
+
       ),
       routes: <String, WidgetBuilder>{
         "app": (BuildContext context) => new App(),
@@ -39,4 +75,5 @@ class MyApp extends StatelessWidget {
       home: new LoadingPage(),
     );
   }
+
 }

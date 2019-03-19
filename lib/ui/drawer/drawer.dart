@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 import 'package:wanandroid_ngu/common/application.dart';
 import 'package:wanandroid_ngu/common/user.dart';
+import 'package:wanandroid_ngu/event/change_theme_event.dart';
 import 'package:wanandroid_ngu/event/login_event.dart';
 import 'package:wanandroid_ngu/ui/drawer/about.dart';
 import 'package:wanandroid_ngu/ui/drawer/collctions.dart';
 import 'package:wanandroid_ngu/ui/drawer/common_website.dart';
 import 'package:wanandroid_ngu/ui/drawer/pretty.dart';
-import 'package:wanandroid_ngu/ui/drawer/setting.dart';
 import 'package:wanandroid_ngu/ui/login/login_page.dart';
+import 'package:wanandroid_ngu/util/theme_util.dart';
+import 'package:wanandroid_ngu/util/utils.dart';
 
 class DrawerPage extends StatefulWidget {
   @override
@@ -26,7 +28,7 @@ class DrawerPageState extends State<DrawerPage> {
   void initState() {
     super.initState();
     this.registerLoginEvent();
-    if(null!=User.singleton.userName){
+    if (null != User.singleton.userName) {
       isLogin = true;
       username = User.singleton.userName;
     }
@@ -45,9 +47,6 @@ class DrawerPageState extends State<DrawerPage> {
     });
   }
 
-
-
-
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -58,7 +57,7 @@ class DrawerPageState extends State<DrawerPage> {
             accountName: InkWell(
               child: Text(username,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
-              onTap: (){
+              onTap: () {
                 if (!isLogin) {
                   Navigator.of(context)
                       .push(new MaterialPageRoute(builder: (context) {
@@ -102,21 +101,41 @@ class DrawerPageState extends State<DrawerPage> {
             ),
             leading: Icon(Icons.web, size: 22.0),
             onTap: () {
-              Navigator.of(context).push(new MaterialPageRoute(builder: (context){
+              Navigator.of(context)
+                  .push(new MaterialPageRoute(builder: (context) {
                 return new CommonWebsitePage();
               }));
             },
           ),
           ListTile(
             title: Text(
-              '设置',
+              '主题',
               textAlign: TextAlign.left,
             ),
             leading: Icon(Icons.settings, size: 22.0),
             onTap: () {
-              Navigator.of(context).push(new MaterialPageRoute(builder: (context){
-                return new SettingPage();
-              }));
+              showDialog(
+                  context: context,
+                  child: new SimpleDialog(
+                    contentPadding: EdgeInsets.all(10.0),
+                    title: new Text("设置主题"),
+                    children: ThemeUtils.supportColors.map((Color color) {
+                      return InkWell(
+                        onTap: () {
+                          ThemeUtils.currentColorTheme = color;
+                          Utils.setColorTheme(ThemeUtils.supportColors.indexOf(color));
+                          changeColorTheme(color);
+                        },
+                        child: Padding(
+                          padding: EdgeInsets.fromLTRB(10, 8, 10, 8),
+                          child: Container(
+                            height: 35,
+                            color: color,
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                  ));
             },
           ),
           ListTile(
@@ -126,7 +145,8 @@ class DrawerPageState extends State<DrawerPage> {
             ),
             leading: Icon(Icons.share, size: 22.0),
             onTap: () {
-              Share.share('给你推荐一个特别好玩的应用玩安卓客户端，点击下载：https://www.pgyer.com/haFL');
+              Share.share(
+                  '给你推荐一个特别好玩的应用玩安卓客户端，点击下载：https://www.pgyer.com/haFL');
             },
           ),
           ListTile(
@@ -136,12 +156,12 @@ class DrawerPageState extends State<DrawerPage> {
             ),
             leading: Icon(Icons.directions_bike, size: 22.0),
             onTap: () {
-              Navigator.of(context).push(new MaterialPageRoute(builder: (context){
+              Navigator.of(context)
+                  .push(new MaterialPageRoute(builder: (context) {
                 return new PrettyPage();
               }));
             },
           ),
-
           ListTile(
             title: Text(
               '关于作者',
@@ -149,7 +169,8 @@ class DrawerPageState extends State<DrawerPage> {
             ),
             leading: Icon(Icons.info, size: 22.0),
             onTap: () {
-              Navigator.of(context).push(new MaterialPageRoute(builder: (context){
+              Navigator.of(context)
+                  .push(new MaterialPageRoute(builder: (context) {
                 return new AboutMePage();
               }));
             },
@@ -193,5 +214,9 @@ class DrawerPageState extends State<DrawerPage> {
     await Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
       return new LoginPage();
     }));
+  }
+
+  changeColorTheme(Color c) {
+    Application.eventBus.fire(new ChangeThemeEvent(c));
   }
 }
