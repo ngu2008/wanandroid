@@ -106,9 +106,13 @@
 | :--: | :--: |:--: |
 | 我的收藏 | 详情页 | 热门搜索 |
 
-| <img src="/screenshot/a11.jpg" width="280" height="498" alt="搜索列表"/> | | |
+| <img src="/screenshot/a11.jpg" width="280" height="498" alt="搜索列表"/> | <img src="/screenshot/b7.png" width="280" height="498" alt="正在加载"/>| <img src="/screenshot/b8.png" width="280" height="498" alt="加载错误"/>|
 | :--: | :--: |:--: |
-| 搜索列表 | | |
+| 搜索列表 | 正在加载 |加载错误 |
+
+| <img src="/screenshot/b9.png" width="280" height="498" alt="正在加载"/>| | |
+| :--: | :--: |:--: |
+| 数据为空 |  |  |
 
 ##  感谢
 
