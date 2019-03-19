@@ -26,7 +26,7 @@ class HomePageState extends BaseWidgetState<HomePage> {
     super.initState();
     setAppBarVisible(false);
 
-    getData();
+   getData();
     _scrollController.addListener(() {
       //滑到了底部，加载更多
       if (_scrollController.position.pixels ==
