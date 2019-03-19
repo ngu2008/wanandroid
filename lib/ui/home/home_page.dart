@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:wanandroid_ngu/base/_base_widget.dart';
-import 'package:wanandroid_ngu/http/common_service.dart';
+import 'package:wanandroid_ngu/http/api_service.dart';
 import 'package:wanandroid_ngu/model/article_model.dart';
 import 'package:wanandroid_ngu/ui/home/banner.dart';
 import 'package:wanandroid_ngu/ui/public_ui/webview_page.dart';
@@ -51,7 +51,7 @@ class HomePageState extends BaseWidgetState<HomePage> {
   //获取文章列表数据
   Future<Null> getData() async {
     _page = 0;
-    CommonService().getArticleList((ArticleModel _articleModel) {
+    ApiService().getArticleList((ArticleModel _articleModel) {
       if (_articleModel.errorCode == 0) {
         //成功
         if (_articleModel.data.datas.length > 0) {
@@ -80,7 +80,7 @@ class HomePageState extends BaseWidgetState<HomePage> {
   //加载更多的数据
   Future<Null> _getMore() async {
     _page++;
-    CommonService().getArticleList((ArticleModel _articleModel) {
+    ApiService().getArticleList((ArticleModel _articleModel) {
       if (_articleModel.errorCode == 0) {
         //成功
         if (_articleModel.data.datas.length > 0) {

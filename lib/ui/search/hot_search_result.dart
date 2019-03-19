@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:wanandroid_ngu/base/_base_widget.dart';
-import 'package:wanandroid_ngu/http/common_service.dart';
+import 'package:wanandroid_ngu/http/api_service.dart';
 import 'package:wanandroid_ngu/model/hotword_result_model.dart';
 import 'package:wanandroid_ngu/ui/public_ui/webview_page.dart';
 
@@ -26,7 +26,7 @@ class HotResultPageState extends BaseWidgetState<HotResultPage> {
   Future<Null> _getData() async {
     _page = 0;
     String _keyword = widget.hot;
-    CommonService().getSearchResult((HotwordResultModel otwordResultModel) {
+    ApiService().getSearchResult((HotwordResultModel otwordResultModel) {
 
       if (otwordResultModel.errorCode == 0) {
         //成功
@@ -55,7 +55,7 @@ class HotResultPageState extends BaseWidgetState<HotResultPage> {
   Future<Null> _getMore() async {
     _page++;
     String _keyword = widget.hot;
-    CommonService().getSearchResult((HotwordResultModel otwordResultModel) {
+    ApiService().getSearchResult((HotwordResultModel otwordResultModel) {
 
       if (otwordResultModel.errorCode == 0) {
         //成功

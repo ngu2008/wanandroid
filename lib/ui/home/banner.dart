@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:wanandroid_ngu/http/common_service.dart';
+import 'package:wanandroid_ngu/http/api_service.dart';
 import 'package:wanandroid_ngu/model/banner_model.dart';
 import 'package:wanandroid_ngu/ui/public_ui/webview_page.dart';
 
@@ -22,7 +22,7 @@ class BannerWidgetState extends State<BannerWidget> {
   }
 
   Future<Null> _getBanner() {
-    CommonService().getBanner((BannerModel _bannerModel) {
+    ApiService().getBanner((BannerModel _bannerModel) {
       if (_bannerModel.data.length > 0) {
         setState(() {
           _bannerList = _bannerModel.data;

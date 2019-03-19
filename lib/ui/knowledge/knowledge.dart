@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:wanandroid_ngu/base/_base_widget.dart';
-import 'package:wanandroid_ngu/http/common_service.dart';
+import 'package:wanandroid_ngu/http/api_service.dart';
 import 'package:wanandroid_ngu/model/system_tree_model.dart';
 import 'package:wanandroid_ngu/ui/knowledge/knowledge_content.dart';
 import 'package:wanandroid_ngu/util/utils.dart';
@@ -41,7 +41,7 @@ class KnowledgePageState extends BaseWidgetState<KnowledgePage> {
   }
 
   Future<Null> _getData() async {
-    CommonService().getSystemTree((SystemTreeModel _systemTreeModel) {
+    ApiService().getSystemTree((SystemTreeModel _systemTreeModel) {
       if (_systemTreeModel.errorCode == 0) {
         //成功
         if (_systemTreeModel.data.length > 0) {

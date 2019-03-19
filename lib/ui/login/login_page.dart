@@ -5,7 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:wanandroid_ngu/common/application.dart';
 import 'package:wanandroid_ngu/common/user.dart';
 import 'package:wanandroid_ngu/event/login_event.dart';
-import 'package:wanandroid_ngu/http/common_service.dart';
+import 'package:wanandroid_ngu/http/api_service.dart';
 import 'package:wanandroid_ngu/ui/login/theme.dart' as Theme;
 import 'package:wanandroid_ngu/model/user_model.dart';
 import 'package:wanandroid_ngu/util/bubble_indication_painter.dart';
@@ -210,7 +210,7 @@ class _LoginPageState extends State<LoginPage>
       String password = loginPasswordController.text;
       if ((null != username && username.trim().length > 0) &&
           (null != password && password.trim().length > 0)) {
-        CommonService().login((UserModel _userModel, Response response) {
+        ApiService().login((UserModel _userModel, Response response) {
           if (_userModel != null) {
             User().saveUserInfo(_userModel, response);
             Application.eventBus.fire(new LoginEvent());
@@ -373,7 +373,7 @@ class _LoginPageState extends State<LoginPage>
         if (password != rePassword) {
           Fluttertoast.showToast(msg: "两次密码输入不一致！");
         } else {
-          CommonService().register((UserModel _userModel) {
+          ApiService().register((UserModel _userModel) {
             if (_userModel != null) {
               if (_userModel.errorCode == 0) {
                 Fluttertoast.showToast(msg: "注册成功！");

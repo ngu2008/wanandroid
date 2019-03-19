@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wanandroid_ngu/http/common_service.dart';
+import 'package:wanandroid_ngu/http/api_service.dart';
 import 'package:wanandroid_ngu/model/hotword_model.dart';
 import 'package:wanandroid_ngu/ui/search/hot_search_result.dart';
 import 'package:wanandroid_ngu/util/utils.dart';
@@ -58,7 +58,7 @@ class SearchPageState extends State<SearchPage> {
 
   //获取文章列表数据
   Future<Null> _getData() async {
-    CommonService().getSearchHotWord((HotwordModel hotwordModel) {
+    ApiService().getSearchHotWord((HotwordModel hotwordModel) {
       setState(() {
         _datas = hotwordModel.data;
       });

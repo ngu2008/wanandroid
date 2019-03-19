@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view_gallery.dart';
-import 'package:wanandroid_ngu/http/common_service.dart';
+import 'package:wanandroid_ngu/http/api_service.dart';
 import 'package:wanandroid_ngu/model/pretty_model.dart';
 
 class PrettyPage extends StatefulWidget {
@@ -21,7 +21,7 @@ class PrettyPageState extends State<PrettyPage> {
   int _page = 1;
 
   Future<Null> _getData() async {
-    CommonService().getPrettyGirl((PrettyModel prettyModel) {
+    ApiService().getPrettyGirl((PrettyModel prettyModel) {
       setState(() {
         _datas = prettyModel.results;
         for (int i = 0; i < _datas.length; i++) {

@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:wanandroid_ngu/base/_base_widget.dart';
-import 'package:wanandroid_ngu/http/common_service.dart';
+import 'package:wanandroid_ngu/http/api_service.dart';
 import 'package:wanandroid_ngu/model/common_websit_model.dart';
 import 'package:wanandroid_ngu/ui/public_ui/webview_page.dart';
 
@@ -23,7 +23,7 @@ class CommonWebsitePageState extends BaseWidgetState<CommonWebsitePage> {
   bool showToTopBtn = false; //是否显示“返回到顶部”按钮
 
   Future<Null> _getData() async {
-    CommonService().getCommonWebsite((CommonWebsitModel commonWebsitModel) {
+    ApiService().getCommonWebsite((CommonWebsitModel commonWebsitModel) {
       if(commonWebsitModel.errorCode==0){
         if(commonWebsitModel.data!=null&&commonWebsitModel.data.length>0){
           showContent();

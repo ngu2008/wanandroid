@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:wanandroid_ngu/base/_base_widget.dart';
-import 'package:wanandroid_ngu/http/common_service.dart';
+import 'package:wanandroid_ngu/http/api_service.dart';
 import 'package:wanandroid_ngu/model/system_tree_content_model.dart';
 import 'package:wanandroid_ngu/model/system_tree_model.dart';
 import 'package:wanandroid_ngu/ui/public_ui/webview_page.dart';
@@ -98,7 +98,7 @@ class _NewsListState extends BaseWidgetState<NewsList> {
     _page = 0;
     int _id = widget.id;
 
-    CommonService().getSystemTreeContent(
+    ApiService().getSystemTreeContent(
         (SystemTreeContentModel _systemTreeContentModel) {
 
           if (_systemTreeContentModel.errorCode == 0) {
@@ -127,7 +127,7 @@ class _NewsListState extends BaseWidgetState<NewsList> {
     _page++;
     int _id = widget.id;
 
-    CommonService().getSystemTreeContent(
+    ApiService().getSystemTreeContent(
         (SystemTreeContentModel _systemTreeContentModel) {
 
           if (_systemTreeContentModel.errorCode == 0) {

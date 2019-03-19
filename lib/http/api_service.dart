@@ -22,7 +22,7 @@ import 'package:wanandroid_ngu/model/hotword_model.dart';
 
 import 'api.dart';
 
-class CommonService {
+class ApiService {
   void getBanner(Function callback) async {
     DioManager.singleton.dio
         .get(Api.HOME_BANNER, options: _getOptions())
@@ -41,14 +41,6 @@ class CommonService {
     });
   }
 
-  void getArticleList2(Function callback, int _page) async {
-    DioManager.singleton.dio
-        .get("http://www.wanandroid.com/lg/collect/list/0/json",
-            options: _getOptions())
-        .then((response) {
-      callback(ArticleModel(response.data));
-    });
-  }
 
   /// 获取知识体系列表
   void getSystemTree(Function callback, Function errorback) async {
@@ -200,26 +192,8 @@ class CommonService {
     });
   }
 
-  /// 我的收藏-新增收藏
-  void addCollection(
-      Function callback, String _title, String _author, String _link) async {
-    FormData formData =
-        new FormData.from({"title": _title, "author": _author, "link": _link});
-    DioManager.singleton.dio
-        .post(Api.ADD_COLLECTION, data: formData, options: _getOptions())
-        .then((response) {
-      callback(BaseModel(response.data));
-    });
-  }
 
-  /// 网站收藏列表
-  void getWebsiteCollectionList(Function callback) async {
-    DioManager.singleton.dio
-        .get(Api.WEBSITE_COLLECTION_LIST, options: _getOptions())
-        .then((response) {
-      callback(WebsiteCollectionModel(response.data));
-    });
-  }
+
 
   ///常用网站
   void getCommonWebsite(Function callback, Function errorback) async {
@@ -254,89 +228,6 @@ class CommonService {
     });
   }
 
-  /// 新增网站收藏
-  void addWebsiteCollectionList(
-      Function callback, String _name, String _link) async {
-    FormData formData = new FormData.from({"name": _name, "link": _link});
-    DioManager.singleton.dio
-        .post(Api.ADD_WEBSITE_COLLECTION,
-            data: formData, options: _getOptions())
-        .then((response) {
-      callback(BaseModel(response.data));
-    });
-  }
-
-  /// 编辑网站收藏
-  void editWebsiteCollectionList(
-      Function callback, int _id, String _name, String _link) async {
-    FormData formData =
-        new FormData.from({"id": _id, "name": _name, "link": _link});
-    DioManager.singleton.dio
-        .post(Api.EDIT_WEBSITE_COLLECTION,
-            data: formData, options: _getOptions())
-        .then((response) {
-      callback(BaseModel(response.data));
-    });
-  }
-
-  /// todo列表
-  void getTodoList(Function callback, int _type) async {
-    DioManager.singleton.dio
-        .get(Api.TODO_LIST + "$_type/json", options: _getOptions())
-        .then((response) {
-      callback(TodoListModel(response.data));
-    });
-  }
-
-  /// 新增todo数据
-  void addTodoData(Function callback, String _title, String _content,
-      String _date, int _type) async {
-    FormData formData = new FormData.from(
-        {"title": _title, "content": _content, "date": _date, "type": _type});
-    DioManager.singleton.dio
-        .post(Api.ADD_TODO, data: formData, options: _getOptions())
-        .then((response) {
-      callback(BaseModel(response.data));
-    });
-  }
-
-  /// 更新todo数据
-  void updateTodoData(Function callback, int _id, String _title,
-      String _content, String _date, int _status, int _type) async {
-    FormData formData = new FormData.from({
-      "title": _title,
-      "content": _content,
-      "date": _date,
-      "status": _status,
-      "type": _type
-    });
-    DioManager.singleton.dio
-        .post(Api.UPDATE_TODO + "$_id/json",
-            data: formData, options: _getOptions())
-        .then((response) {
-      callback(BaseModel(response.data));
-    });
-  }
-
-  /// 删除todo数据
-  void deleteTodoData(Function callback, int _id) async {
-    DioManager.singleton.dio
-        .post(Api.DELETE_TODO + "$_id/json", data: null, options: _getOptions())
-        .then((response) {
-      callback(BaseModel(response.data));
-    });
-  }
-
-  /// 仅更新todo完成状态
-  void doneTodoData(Function callback, int _id, int _status) async {
-    FormData formData = new FormData.from({"status": _status});
-    DioManager.singleton.dio
-        .post(Api.DONE_TODO + "$_id/json",
-            data: formData, options: _getOptions())
-        .then((response) {
-      callback(BaseModel(response.data));
-    });
-  }
 
   Options _getOptions() {
     Map<String, String> map = new Map();

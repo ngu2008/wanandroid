@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:wanandroid_ngu/base/_base_widget.dart';
-import 'package:wanandroid_ngu/http/common_service.dart';
+import 'package:wanandroid_ngu/http/api_service.dart';
 import 'package:wanandroid_ngu/model/base_model.dart';
 import 'package:wanandroid_ngu/model/collection_model.dart';
 import 'package:wanandroid_ngu/ui/public_ui/webview_page.dart';
@@ -26,7 +26,7 @@ class CollectionsPageState extends BaseWidgetState<CollectionsPage> {
 
   Future<Null> getData() async {
     _page = 0;
-    CommonService().getCollectionList((
+    ApiService().getCollectionList((
       CollectionModel _collectionModel,
     ) {
       if (_collectionModel.errorCode==0) {//成功
@@ -52,7 +52,7 @@ class CollectionsPageState extends BaseWidgetState<CollectionsPage> {
 
   Future<Null> _getMore() async {
     _page++;
-    CommonService().getCollectionList((
+    ApiService().getCollectionList((
       CollectionModel _collectionModel,
     ){
       if (_collectionModel.errorCode==0) {//成功
@@ -130,7 +130,7 @@ class CollectionsPageState extends BaseWidgetState<CollectionsPage> {
   }
 
   Future<Null> _cancelCollection(int _position, int _id, int _originId) async {
-    CommonService().cancelCollection((BaseModel _baseModel) {
+    ApiService().cancelCollection((BaseModel _baseModel) {
       if (_baseModel.errorCode == 0) {
         _datas.removeAt(_position);
       }

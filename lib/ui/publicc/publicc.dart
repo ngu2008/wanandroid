@@ -4,7 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:wanandroid_ngu/base/_base_widget.dart';
 import 'package:wanandroid_ngu/common/application.dart';
 import 'package:wanandroid_ngu/event/change_theme_event.dart';
-import 'package:wanandroid_ngu/http/common_service.dart';
+import 'package:wanandroid_ngu/http/api_service.dart';
 import 'package:wanandroid_ngu/model/wx_article_content_model.dart';
 import 'package:wanandroid_ngu/model/wx_article_title_model.dart';
 import 'package:wanandroid_ngu/ui/public_ui/webview_page.dart';
@@ -25,7 +25,7 @@ class PubliccPageState extends BaseWidgetState<PubliccPage>
   TabController _tabController;
 
   Future<Null> _getData() async {
-    CommonService().getWxList((WxArticleTitleModel _articleTitleModel) {
+    ApiService().getWxList((WxArticleTitleModel _articleTitleModel) {
 
       if (_articleTitleModel.errorCode == 0) {
         //成功
@@ -140,7 +140,7 @@ class _NewsListState extends State<NewsList> {
   Future<Null> _getData() async {
     _page = 1;
     int _id = widget.id;
-    CommonService().getWxArticleList(
+    ApiService().getWxArticleList(
         (WxArticleContentModel _wxArticleContentModel) {
       setState(() {
         _datas = _wxArticleContentModel.data.datas;
@@ -151,7 +151,7 @@ class _NewsListState extends State<NewsList> {
   Future<Null> _getMore() async {
     _page++;
     int _id = widget.id;
-    CommonService().getWxArticleList(
+    ApiService().getWxArticleList(
         (WxArticleContentModel _articleContentModel) {
       setState(() {
         _datas.addAll(_articleContentModel.data.datas);
