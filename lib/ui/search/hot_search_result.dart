@@ -37,7 +37,6 @@ class HotResultPageState extends BaseWidgetState<HotResultPage> {
             _datas.clear();
             _datas.addAll(otwordResultModel.data.datas);
           });
-          showEmpty();
         } else {
           //数据为空
           showEmpty();
