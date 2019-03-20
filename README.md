@@ -6,6 +6,7 @@
 - Flutter官方example[flutter_gallery](https://github.com/flutter/flutter/tree/master/examples/flutter_gallery)
 - [阿里巴巴咸鱼团队系列文章](https://www.yuque.com/xytech/flutter)
 - [阿里巴巴flutter-go](https://github.com/alibaba/flutter-go)，flutter 开发者帮助 APP，包含 flutter 常用 140+ 组件的demo 演示与中文文档
+- [awesome-flutter](https://github.com/Solido/awesome-flutter)包含居多优秀的Flutter库，工具，教程，文章等,
 - [玩Android跨平台项目](https://www.wanandroid.com/project/list/1?cid=402)
 - 非常有用的[Json转Model插件](https://github.com/neverwoodsS/idea_dart_json_format)
 - [Flutter-Notebook](https://github.com/OpenFlutter/Flutter-Notebook),提供了很多优秀样例和Demo
