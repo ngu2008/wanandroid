@@ -65,8 +65,6 @@ class MyAppState extends State<MyApp>{
       theme: new ThemeData(
         primaryColor: themeColor,
         brightness: Brightness.light
-
-
       ),
       routes: <String, WidgetBuilder>{
         "app": (BuildContext context) => new App(),

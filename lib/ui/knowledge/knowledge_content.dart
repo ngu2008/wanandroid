@@ -45,6 +45,9 @@ class KnowledgeContentPageState extends State<KnowledgeContentPage>
       appBar: new AppBar(
         title: Text(_datas.name),
         bottom: new TabBar(
+            indicatorColor: Colors.white,
+            labelStyle:TextStyle(fontSize: 16),
+            unselectedLabelStyle: TextStyle(fontSize: 16),
             controller: _tabController,
             isScrollable: true,
             tabs: _datas.children.map((SystemTreeChild item) {
