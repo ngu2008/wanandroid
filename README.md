@@ -124,6 +124,8 @@
 
 ## 使用开源库
 
+- [shared_preferences](https://pub.dartlang.org/packages/shared_preferences)
+- [fluttertoast](https://pub.dartlang.org/packages/fluttertoast)
 - [share](https://pub.flutter-io.cn/packages/share)
 - [flutter_swiper](https://pub.flutter-io.cn/packages/flutter_swiper)
 - [cupertino_icons](https://pub.flutter-io.cn/packages/cupertino_icons)
