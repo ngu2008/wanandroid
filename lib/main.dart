@@ -59,8 +59,15 @@ class MyAppState extends State<MyApp> {
     return MaterialApp(
       title: "玩Android",
       debugShowCheckedModeBanner: false,
+<<<<<<< HEAD
       theme:
           new ThemeData(primaryColor: themeColor, brightness: Brightness.light),
+=======
+      theme: new ThemeData(
+        primaryColor: themeColor,
+        brightness: Brightness.light
+      ),
+>>>>>>> 268114b701665528b379099a04861f782a91c4b6
       routes: <String, WidgetBuilder>{
         "app": (BuildContext context) => new App(),
         "splash": (BuildContext context) => new SplashScreen(),
