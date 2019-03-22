@@ -48,7 +48,7 @@
 #### V1.3版本
 
 - 新增搜索和搜索结果列表
-- 新增页面正在加载...使用[flutter_spinkit](https://github.com/jogboms/flutter_spinkit/tree/master/example)
+- 新增页面正在加载...
 - 整个界面UI风格修改
 
 #### V1.2版本
@@ -124,7 +124,6 @@
 
 ## 使用开源库
 
-- [flutter_spinkit](https://github.com/jogboms/flutter_spinkit/tree/master/example)
 - [share](https://pub.flutter-io.cn/packages/share)
 - [flutter_swiper](https://pub.flutter-io.cn/packages/flutter_swiper)
 - [cupertino_icons](https://pub.flutter-io.cn/packages/cupertino_icons)
