@@ -151,6 +151,7 @@ class KnowledgePageState extends BaseWidgetState<KnowledgePage> {
   Widget getContentWidget(BuildContext context) {
     return Scaffold(
       body: RefreshIndicator(
+        displacement: 15,
         onRefresh: _getData,
         child: ListView.separated(
           itemBuilder: _renderRow,

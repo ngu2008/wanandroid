@@ -19,7 +19,6 @@ void main() {
         SystemUiOverlayStyle(statusBarColor: Colors.transparent);
     SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
   }
-
 }
 
 Future<Null> getLoginInfo() async {
@@ -31,11 +30,9 @@ class MyApp extends StatefulWidget {
   State<StatefulWidget> createState() {
     return MyAppState();
   }
-
 }
 
-class MyAppState extends State<MyApp>{
-
+class MyAppState extends State<MyApp> {
   Color themeColor = ThemeUtils.currentColorTheme;
 
   @override
@@ -45,7 +42,8 @@ class MyAppState extends State<MyApp>{
       print('color theme index = $index');
       if (index != null) {
         ThemeUtils.currentColorTheme = ThemeUtils.supportColors[index];
-        Application.eventBus.fire(new ChangeThemeEvent(ThemeUtils.supportColors[index]));
+        Application.eventBus
+            .fire(new ChangeThemeEvent(ThemeUtils.supportColors[index]));
       }
     });
 
@@ -56,18 +54,13 @@ class MyAppState extends State<MyApp>{
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "玩Android",
       debugShowCheckedModeBanner: false,
-      theme: new ThemeData(
-        primaryColor: themeColor,
-        brightness: Brightness.light
-
-
-      ),
+      theme:
+          new ThemeData(primaryColor: themeColor, brightness: Brightness.light),
       routes: <String, WidgetBuilder>{
         "app": (BuildContext context) => new App(),
         "splash": (BuildContext context) => new SplashScreen(),
@@ -75,5 +68,4 @@ class MyAppState extends State<MyApp>{
       home: new LoadingPage(),
     );
   }
-
 }

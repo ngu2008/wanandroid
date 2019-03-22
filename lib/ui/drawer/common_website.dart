@@ -65,6 +65,7 @@ class CommonWebsitePageState extends BaseWidgetState<CommonWebsitePage> {
 
   Widget _getBodyWidget(List<DataListBean> datas) {
     return RefreshIndicator(
+      displacement: 15,
       onRefresh: _getData,
       child: GridView.builder(
           padding: EdgeInsets.all(15),

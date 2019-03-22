@@ -104,8 +104,11 @@ class CollectionsPageState extends BaseWidgetState<CollectionsPage> {
   Widget getContentWidget(BuildContext context) {
     return Scaffold(
       body: RefreshIndicator(
+          displacement: 15,
           child: ListView.separated(
+            //普通项
             itemBuilder: _renderRow,
+            //插入项
             separatorBuilder: (BuildContext context, int index) {
               return Container(
                 height: 0.5,

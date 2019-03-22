@@ -193,6 +193,7 @@ class _ProjectListState extends State<ProjectList> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: RefreshIndicator(
+        displacement: 15,
         onRefresh: _getData,
         child: ListView.separated(
             itemBuilder: _renderRow,

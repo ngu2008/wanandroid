@@ -19,6 +19,7 @@ class PubliccPage extends BaseWidget {
 
 class PubliccPageState extends BaseWidgetState<PubliccPage>
     with TickerProviderStateMixin {
+
   Color themeColor = ThemeUtils.currentColorTheme;
 
   List<WxArticleTitleData> _datas = new List();
@@ -26,7 +27,6 @@ class PubliccPageState extends BaseWidgetState<PubliccPage>
 
   Future<Null> _getData() async {
     ApiService().getWxList((WxArticleTitleModel _articleTitleModel) {
-
       if (_articleTitleModel.errorCode == 0) {
         //成功
         if (_articleTitleModel.data.length > 0) {
@@ -42,7 +42,6 @@ class PubliccPageState extends BaseWidgetState<PubliccPage>
       } else {
         Fluttertoast.showToast(msg: _articleTitleModel.errorMsg);
       }
-
     }, (DioError error) {
       //发生错误
       print(error.response);
@@ -61,7 +60,6 @@ class PubliccPageState extends BaseWidgetState<PubliccPage>
         themeColor = event.color;
       });
     });
-
   }
 
   @override
@@ -70,7 +68,6 @@ class PubliccPageState extends BaseWidgetState<PubliccPage>
     _tabController.dispose();
     super.dispose();
   }
-
 
   @override
   AppBar getAppBar() {
@@ -87,30 +84,30 @@ class PubliccPageState extends BaseWidgetState<PubliccPage>
     );
     return Scaffold(
         body: Column(
-          children: <Widget>[
-            Container(
-              color: themeColor,
-              height: 48,
-              child: TabBar(
-                indicatorColor: Colors.white,
-                labelStyle:TextStyle(fontSize: 16),
-                unselectedLabelStyle: TextStyle(fontSize: 16),
-                controller: _tabController,
-                tabs: _datas.map((WxArticleTitleData item) {
-                  return Tab(text: item.name);
-                }).toList(),
-                isScrollable: true,
-              ),
-            ),
-            Expanded(
-                child: TabBarView(
-                  controller: _tabController,
-                  children: _datas.map((item) {
-                    return NewsList(item.id);
-                  }).toList(),
-                ))
-          ],
-        ));
+      children: <Widget>[
+        Container(
+          color: themeColor,
+          height: 48,
+          child: TabBar(
+            indicatorColor: Colors.white,
+            labelStyle: TextStyle(fontSize: 16),
+            unselectedLabelStyle: TextStyle(fontSize: 16),
+            controller: _tabController,
+            tabs: _datas.map((WxArticleTitleData item) {
+              return Tab(text: item.name);
+            }).toList(),
+            isScrollable: true,
+          ),
+        ),
+        Expanded(
+            child: TabBarView(
+          controller: _tabController,
+          children: _datas.map((item) {
+            return NewsList(item.id);
+          }).toList(),
+        ))
+      ],
+    ));
   }
 
   @override
@@ -151,8 +148,7 @@ class _NewsListState extends State<NewsList> {
   Future<Null> _getMore() async {
     _page++;
     int _id = widget.id;
-    ApiService().getWxArticleList(
-        (WxArticleContentModel _articleContentModel) {
+    ApiService().getWxArticleList((WxArticleContentModel _articleContentModel) {
       setState(() {
         _datas.addAll(_articleContentModel.data.datas);
       });
@@ -194,6 +190,7 @@ class _NewsListState extends State<NewsList> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: RefreshIndicator(
+        displacement: 15,
         onRefresh: _getData,
         child: ListView.separated(
             physics: new AlwaysScrollableScrollPhysics(),

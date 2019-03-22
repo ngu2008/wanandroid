@@ -27,7 +27,7 @@ class HomePageState extends BaseWidgetState<HomePage> {
     super.initState();
     setAppBarVisible(false);
 
-   getData();
+    getData();
     _scrollController.addListener(() {
       //滑到了底部，加载更多
       if (_scrollController.position.pixels ==
@@ -116,6 +116,7 @@ class HomePageState extends BaseWidgetState<HomePage> {
   Widget getContentWidget(BuildContext context) {
     return Scaffold(
       body: RefreshIndicator(
+        displacement: 15,
         onRefresh: getData,
         child: ListView.separated(
             itemBuilder: _renderRow,
@@ -133,12 +134,12 @@ class HomePageState extends BaseWidgetState<HomePage> {
       floatingActionButton: !showToTopBtn
           ? null
           : FloatingActionButton(
-              child: Icon(Icons.arrow_upward),
-              onPressed: () {
-                //返回到顶部时执行动画
-                _scrollController.animateTo(.0,
-                    duration: Duration(milliseconds: 200), curve: Curves.ease);
-              }),
+          child: Icon(Icons.arrow_upward),
+          onPressed: () {
+            //返回到顶部时执行动画
+            _scrollController.animateTo(.0,
+                duration: Duration(milliseconds: 200), curve: Curves.ease);
+          }),
     );
   }
 
@@ -153,11 +154,13 @@ class HomePageState extends BaseWidgetState<HomePage> {
 
     if (index < _datas.length - 1) {
       return new InkWell(
-        onTap: () {
-          Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
+        onTap: () async {
+
+          var data=await  Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
             return new WebViewPage(
                 title: _datas[index - 1].title, url: _datas[index - 1].link);
           }));
+          print(data+"11111111111111111111111");
         },
         child: Column(
           children: <Widget>[

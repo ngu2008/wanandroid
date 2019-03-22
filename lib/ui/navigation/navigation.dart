@@ -151,6 +151,7 @@ class NavigationState extends BaseWidgetState<NavigationPage> {
   Widget getContentWidget(BuildContext context) {
     return Scaffold(
       body: RefreshIndicator(
+        displacement: 15,
         child: _rightListView(context),
         onRefresh: _getData,
       ),

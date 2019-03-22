@@ -6,7 +6,6 @@ class WebViewPage extends StatefulWidget {
   String title;
   String url;
 
-
   WebViewPage({
     Key key,
     @required this.title,
@@ -39,23 +38,32 @@ class WebViewPageState extends State<WebViewPage> {
     });
   }
 
+  Future<bool> _requestPop() {
+    //相当于Android的setResult
+    Navigator.pop(context, "返回给上一个页面的测试数据");
+    return new Future.value(false);
+  }
+
   @override
   Widget build(BuildContext context) {
-
-    return WebviewScaffold(
-      url: widget.url,
-      appBar: new AppBar(
-        centerTitle: true,
-        elevation: 0.4,
-        title: new Text(widget.title),
-        bottom: new PreferredSize(
-            child: isLoad?new LinearProgressIndicator():new Divider(height: 1.0,color: ThemeUtils.currentColorTheme ),
-            preferredSize: const Size.fromHeight(1.0),
+    return WillPopScope(
+        child: WebviewScaffold(
+          url: widget.url,
+          appBar: new AppBar(
+            elevation: 0.4,
+            title: new Text(widget.title),
+            bottom: new PreferredSize(
+              child: isLoad
+                  ? new LinearProgressIndicator()
+                  : new Divider(
+                      height: 1.0, color: ThemeUtils.currentColorTheme),
+              preferredSize: const Size.fromHeight(1.0),
+            ),
+          ),
+          withJavascript: true,
+          withZoom: false,
+          withLocalStorage: true,
         ),
-      ),
-      withJavascript: true,
-      withZoom: false,
-      withLocalStorage: true,
-    );
+        onWillPop: _requestPop);
   }
 }
