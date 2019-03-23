@@ -154,13 +154,12 @@ class HomePageState extends BaseWidgetState<HomePage> {
 
     if (index < _datas.length - 1) {
       return new InkWell(
-        onTap: () async {
-
-          var data=await  Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
+        onTap: ()  {
+           Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
             return new WebViewPage(
                 title: _datas[index - 1].title, url: _datas[index - 1].link);
           }));
-          print(data+"11111111111111111111111");
+
         },
         child: Column(
           children: <Widget>[

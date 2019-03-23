@@ -38,32 +38,31 @@ class WebViewPageState extends State<WebViewPage> {
     });
   }
 
-  Future<bool> _requestPop() {
-    //相当于Android的setResult
-    Navigator.pop(context, "返回给上一个页面的测试数据");
-    return new Future.value(false);
-  }
+//  Future<bool> _requestPop() {
+//    //相当于Android的setResult
+//    Navigator.pop(context, "返回给上一个页面的测试数据");
+//    return new Future.value(false);
+//  }
 
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-        child: WebviewScaffold(
-          url: widget.url,
-          appBar: new AppBar(
-            elevation: 0.4,
-            title: new Text(widget.title),
-            bottom: new PreferredSize(
-              child: isLoad
-                  ? new LinearProgressIndicator()
-                  : new Divider(
-                      height: 1.0, color: ThemeUtils.currentColorTheme),
-              preferredSize: const Size.fromHeight(1.0),
-            ),
+      child: WebviewScaffold(
+        url: widget.url,
+        appBar: new AppBar(
+          elevation: 0.4,
+          title: new Text(widget.title),
+          bottom: new PreferredSize(
+            child: isLoad
+                ? new LinearProgressIndicator()
+                : new Divider(height: 1.0, color: ThemeUtils.currentColorTheme),
+            preferredSize: const Size.fromHeight(1.0),
           ),
-          withJavascript: true,
-          withZoom: false,
-          withLocalStorage: true,
         ),
-        onWillPop: _requestPop);
+        withJavascript: true,
+        withZoom: false,
+        withLocalStorage: true,
+      ),
+    );
   }
 }
