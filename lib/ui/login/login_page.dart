@@ -6,7 +6,6 @@ import 'package:wanandroid_ngu/common/application.dart';
 import 'package:wanandroid_ngu/common/user.dart';
 import 'package:wanandroid_ngu/event/login_event.dart';
 import 'package:wanandroid_ngu/http/api_service.dart';
-import 'package:wanandroid_ngu/ui/login/theme.dart' as Theme;
 import 'package:wanandroid_ngu/model/user_model.dart';
 import 'package:wanandroid_ngu/util/bubble_indication_painter.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -66,10 +65,7 @@ class _LoginPageState extends State<LoginPage>
                 : 775.0,
             decoration: new BoxDecoration(
               gradient: new LinearGradient(
-                  colors: [
-                    Theme.Colors.loginGradientStart,
-                    Theme.Colors.loginGradientEnd
-                  ],
+                  colors: [Color(0xFFffffff), Color(0xFFffffff)],
                   begin: const FractionalOffset(0.0, 0.0),
                   end: const FractionalOffset(1.0, 1.0),
                   stops: [0.0, 1.0],
@@ -311,21 +307,18 @@ class _LoginPageState extends State<LoginPage>
                   borderRadius: BorderRadius.all(Radius.circular(5.0)),
                   boxShadow: <BoxShadow>[
                     BoxShadow(
-                      color: Theme.Colors.loginGradientStart,
+                      color: const Color(0xFFffffff),
                       offset: Offset(1.0, 6.0),
                       blurRadius: 20.0,
                     ),
                     BoxShadow(
-                      color: Theme.Colors.loginGradientEnd,
+                      color: const Color(0xFFffffff),
                       offset: Offset(1.0, 6.0),
                       blurRadius: 20.0,
                     ),
                   ],
                   gradient: new LinearGradient(
-                      colors: [
-                        Theme.Colors.loginGradientEnd,
-                        Theme.Colors.loginGradientStart
-                      ],
+                      colors: [Color(0xFFffffff), Color(0xFFffffff)],
                       begin: const FractionalOffset(0.2, 0.2),
                       end: const FractionalOffset(1.0, 1.0),
                       stops: [0.0, 1.0],
