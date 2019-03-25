@@ -35,7 +35,6 @@ class BannerWidgetState extends State<BannerWidget> {
   Widget buildItemImageWidget(BuildContext context, int index) {
     return new InkWell(
       onTap: () {
-        //RouteUtil.toWebView(context, _bannerList[index].title, _bannerList[index].url);
         Navigator.of(context).push(new MaterialPageRoute(builder: (context){
           return new WebViewPage(title: _bannerList[index].title,url: _bannerList[index].url);
         }));
@@ -51,7 +50,6 @@ class BannerWidgetState extends State<BannerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Swiper(
       itemBuilder: (BuildContext context, int index) {
         if (_bannerList[index] == null ||
