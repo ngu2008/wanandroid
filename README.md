@@ -10,7 +10,7 @@
 - [玩Android跨平台项目](https://www.wanandroid.com/project/list/1?cid=402)
 - 非常有用的[Json转Model插件](https://github.com/neverwoodsS/idea_dart_json_format)
 - [Flutter-Notebook](https://github.com/OpenFlutter/Flutter-Notebook),提供了很多优秀样例和Demo
-
+- [Flutter-plugins](https://github.com/flutter/plugins),flutter官方插件，提供了众多优秀插件
 ## 前言
 
 - 这是一款使用Flutter写的WanAndroid客户端应用，在Android和IOS都完美运行
