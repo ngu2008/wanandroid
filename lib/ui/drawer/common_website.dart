@@ -182,8 +182,6 @@ class CommonWebsitePageState extends BaseWidgetState<CommonWebsitePage> {
   @override
   void dispose() {
     super.dispose();
-    //关闭数据库
-    db.close();
   }
 
 }
