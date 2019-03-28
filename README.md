@@ -38,6 +38,10 @@
 
 ## 功能介绍
 
+#### V1.5版本
+
+- 常用网站增加数据库[sqflite](https://pub.flutter-io.cn/packages/sqflite)功能
+
 #### V1.4版本
 
 - 增加切换主题
@@ -53,7 +57,7 @@
 
 #### V1.2版本
 
-- 新增福利，妹子图，你懂得
+- 新增福利，妹子图，使用[photo_view](https://pub.flutter-io.cn/packages/photo_view)，你懂得
 - 新增分享[share](https://pub.flutter-io.cn/packages/share)
 - 新增常用网站
 - 新增关于作者，退出登录
@@ -132,3 +136,6 @@
 - [flutter_webview_plugin](https://pub.flutter-io.cn/packages/flutter_webview_plugin)
 - [dio](https://pub.flutter-io.cn/packages/dio)
 - [flutter-intro-slider](https://github.com/duytq94/flutter-intro-slider)
+- [photo_view](https://pub.flutter-io.cn/packages/photo_view)
+- [sqflite](https://pub.flutter-io.cn/packages/sqflite)
+- [path_provider ](https://pub.flutter-io.cn/packages/path_provider#-installing-tab-)

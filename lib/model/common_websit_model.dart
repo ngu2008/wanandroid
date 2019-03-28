@@ -49,4 +49,21 @@ class DataListBean {
     }
     return list;
   }
+
+  Map<String, dynamic> toMap() {
+    var map = Map<String, dynamic>();
+    map["icon"] = icon;
+    map["link"] = link;
+    map["name"] = name;
+    map["id"] = id;
+    map["web_order"] = order;
+    map["visible"] = visible;
+
+    if (id != null) {
+      map["id"] = id;
+    }
+
+    return map;
+  }
+
 }

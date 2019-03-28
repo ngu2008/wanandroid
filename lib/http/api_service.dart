@@ -206,7 +206,6 @@ class ApiService {
     });
   }
 
-//http://gank.io/api/data/福利/10/1
   void getPrettyGirl(Function callback, int _page) async {
     DioManager.singleton.dio
         .get("http://gank.io/api/data/福利/10/" + "$_page")

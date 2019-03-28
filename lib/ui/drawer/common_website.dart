@@ -2,52 +2,79 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:wanandroid_ngu/base/_base_widget.dart';
+import 'package:wanandroid_ngu/db/db_helper.dart';
 import 'package:wanandroid_ngu/http/api_service.dart';
 import 'package:wanandroid_ngu/model/common_websit_model.dart';
 import 'package:wanandroid_ngu/ui/public_ui/webview_page.dart';
 
 class CommonWebsitePage extends BaseWidget {
-
   @override
   BaseWidgetState<BaseWidget> getState() {
     return CommonWebsitePageState();
   }
-
 }
 
 class CommonWebsitePageState extends BaseWidgetState<CommonWebsitePage> {
-
-  List<DataListBean> _datas=new List();
+  List<DataListBean> _datas = new List();
   ScrollController _scrollController = ScrollController();
+  var db = DatabaseHelper();
 
   bool showToTopBtn = false; //是否显示“返回到顶部”按钮
 
   Future<Null> _getData() async {
     ApiService().getCommonWebsite((CommonWebsitModel commonWebsitModel) {
-      if(commonWebsitModel.errorCode==0){
-        if(commonWebsitModel.data!=null&&commonWebsitModel.data.length>0){
+      if (commonWebsitModel.errorCode == 0) {
+        var datas = commonWebsitModel.data;
+        if (datas != null &&datas.length > 0) {
           showContent();
           setState(() {
-            _datas = commonWebsitModel.data;
+            _datas = datas;
           });
-        }else {
+
+          //清空表数据
+          db.clear();
+          //数据存入数据库
+          for(int i = 0 ; i <datas.length;i++){
+            db.saveItem(datas[i]);
+          }
+
+        } else {
           showEmpty();
         }
-      }else {
+      } else {
         Fluttertoast.showToast(msg: commonWebsitModel.errorMsg);
       }
-    }, (DioError error) {//发生错误
+    }, (DioError error) {
+      //发生错误
       print(error.response);
-      setState(() {
-        showError();
-      });
+//      setState(() {
+//        showError();
+//      });
     });
+  }
+
+  _getDataFromDb() async {
+    List datas = await db.getTotalList();
+    if(datas.length>0){
+      datas.forEach((item){
+        DataListBean dataListBean = DataListBean.fromMap(item);
+        _datas.add(dataListBean);
+      });
+      setState(() {
+
+      });
+    }else{
+      showloading();
+    }
   }
 
   @override
   void initState() {
     super.initState();
-    showloading();
+    // showloading();
+    //读取数据库的数据
+    _getDataFromDb();
+
     _getData();
     _scrollController.addListener(() {
       //当前位置是否超过屏幕高度
@@ -74,7 +101,7 @@ class CommonWebsitePageState extends BaseWidgetState<CommonWebsitePage> {
               mainAxisSpacing: 15,
               crossAxisSpacing: 15,
               childAspectRatio: 1.333 //
-          ),
+              ),
           controller: _scrollController,
           itemCount: _datas.length,
           itemBuilder: _renderItem),
@@ -124,7 +151,7 @@ class CommonWebsitePageState extends BaseWidgetState<CommonWebsitePage> {
 
   @override
   AppBar getAppBar() {
-    return  AppBar(
+    return AppBar(
       title: Text("常用网站"),
       elevation: 0.4,
     );
@@ -137,19 +164,26 @@ class CommonWebsitePageState extends BaseWidgetState<CommonWebsitePage> {
       floatingActionButton: !showToTopBtn
           ? null
           : FloatingActionButton(
-          child: Icon(Icons.arrow_upward),
-          onPressed: () {
-            //返回到顶部时执行动画
-            _scrollController.animateTo(.0,
-                duration: Duration(milliseconds: 200), curve: Curves.ease);
-          }),
+              child: Icon(Icons.arrow_upward),
+              onPressed: () {
+                //返回到顶部时执行动画
+                _scrollController.animateTo(.0,
+                    duration: Duration(milliseconds: 200), curve: Curves.ease);
+              }),
     );
   }
-
 
   @override
   void onClickErrorWidget() {
     showloading();
     _getData();
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+    //关闭数据库
+    db.close();
+  }
+
 }
