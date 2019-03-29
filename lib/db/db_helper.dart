@@ -4,13 +4,11 @@ import 'package:sqflite/sqflite.dart';
 import 'dart:async';
 import 'package:path/path.dart';
 import 'package:wanandroid_ngu/model/common_websit_model.dart';
-import 'package:wanandroid_ngu/model/todo_item.dart';
 
 class DatabaseHelper {
 
   static final DatabaseHelper _instance = DatabaseHelper.internal();
   factory DatabaseHelper() => _instance;
-
 
   final String tableName = "table_common_web";
 

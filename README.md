@@ -21,6 +21,14 @@
 
 - 根据[Flutter中文网](https://flutterchina.club/get-started/install)搭建开发环境，使用Android Studio安装Flutter插件，点击pubspec.yaml的package get，然后运行
 
+##  APP下载
+
+- Android[点击下载](https://www.pgyer.com/haFL)，或者扫描下方二维码下载
+
+  ![](screenshot/a7.png)
+  
+  - 暂不支持IOS版本下载，请自行clone项目代码运行。
+
 ## App目录结构
 >- |--lib
 >    - |-- main (入口类)
@@ -34,7 +42,6 @@
 >    - |-- model (实体类)
 >    - |-- ui (界面相关)
 >    - |-- util (工具类)
-
 
 ## 功能介绍
 
@@ -77,14 +84,6 @@
 ## 我的主页
  - [掘金](https://juejin.im/user/5b319afee51d455e2c32fb5b/posts)
  - [CSDN](https://blog.csdn.net/zw2008224044)
-
-## 下载
-
-- Android[点击下载](https://www.pgyer.com/haFL)，或者扫描下方二维码下载
-
-  ![](screenshot/a7.png)
-
-- 暂不支持IOS版本下载，请自行clone项目代码运行。
 
 ## 应用截图
 
