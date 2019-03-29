@@ -27,7 +27,7 @@
 
   ![](screenshot/a7.png)
   
-  - 暂不支持IOS版本下载，请自行clone项目代码运行。
+- 暂不支持IOS版本下载，请自行clone项目代码运行。
 
 ## App目录结构
 >- |--lib
