@@ -9,6 +9,7 @@ import 'package:wanandroid_ngu/http/api_service.dart';
 import 'package:wanandroid_ngu/model/user_model.dart';
 import 'package:wanandroid_ngu/util/bubble_indication_painter.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:wanandroid_ngu/util/theme_util.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key}) : super(key: key);
@@ -19,6 +20,9 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage>
     with SingleTickerProviderStateMixin {
+
+  Color themeColor = ThemeUtils.currentColorTheme;
+
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   final FocusNode myFocusNodeEmailLogin = FocusNode();
@@ -149,7 +153,7 @@ class _LoginPageState extends State<LoginPage>
           fontSize: 16.0,
         ),
       ),
-      backgroundColor: Colors.blue,
+      backgroundColor: themeColor,
       duration: Duration(seconds: 3),
     ));
   }
@@ -327,11 +331,11 @@ class _LoginPageState extends State<LoginPage>
                 child: FlatButton(
                     shape: RoundedRectangleBorder(
                         side: BorderSide(
-                          color: const Color(0xFF5394FF),
+                          color: themeColor,
                           width: 1,
                         ),
                         borderRadius: BorderRadius.circular(30)),
-                    color: const Color(0xFF5394FF),
+                    color: themeColor,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                           vertical: 10.0, horizontal: 60.0),
@@ -497,11 +501,11 @@ class _LoginPageState extends State<LoginPage>
                 child: FlatButton(
                     shape: RoundedRectangleBorder(
                         side: BorderSide(
-                          color: const Color(0xFF5394FF),
+                          color: themeColor,
                           width: 1,
                         ),
                         borderRadius: BorderRadius.circular(30)),
-                    color: const Color(0xFF5394FF),
+                    color: themeColor,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                           vertical: 10.0, horizontal: 60.0),

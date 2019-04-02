@@ -30,7 +30,6 @@ class CommonWebsitePageState extends BaseWidgetState<CommonWebsitePage> {
           setState(() {
             _datas = datas;
           });
-
           //清空表数据
           db.clear();
           //数据存入数据库

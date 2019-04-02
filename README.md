@@ -48,6 +48,7 @@
 #### V1.5版本
 
 - 常用网站增加数据库[sqflite](https://pub.flutter-io.cn/packages/sqflite)功能
+- 修复注册登录按钮颜色与主题色不一致的问题
 
 #### V1.4版本
 

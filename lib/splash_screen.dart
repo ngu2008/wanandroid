@@ -103,5 +103,4 @@ class SplashScreenState extends State<SplashScreen> {
       nameDoneBtn: "进入",
     );
   }
-
 }
