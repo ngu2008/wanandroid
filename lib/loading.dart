@@ -15,7 +15,7 @@ class _LoadingState extends State<LoadingPage> {
   @override
   void initState(){
     super.initState();
-    //在加载页面停顿3秒
+    //在加载页面停顿2秒
     new Future.delayed(Duration(seconds: 2),(){
       _getHasSkip();
     });

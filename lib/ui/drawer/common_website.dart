@@ -25,7 +25,7 @@ class CommonWebsitePageState extends BaseWidgetState<CommonWebsitePage> {
     ApiService().getCommonWebsite((CommonWebsitModel commonWebsitModel) {
       if (commonWebsitModel.errorCode == 0) {
         var datas = commonWebsitModel.data;
-        if (datas != null &&datas.length > 0) {
+        if (datas != null && datas.length > 0) {
           showContent();
           setState(() {
             _datas = datas;
@@ -33,10 +33,9 @@ class CommonWebsitePageState extends BaseWidgetState<CommonWebsitePage> {
           //清空表数据
           db.clear();
           //数据存入数据库
-          for(int i = 0 ; i <datas.length;i++){
+          for (int i = 0; i < datas.length; i++) {
             db.saveItem(datas[i]);
           }
-
         } else {
           showEmpty();
         }
@@ -54,15 +53,15 @@ class CommonWebsitePageState extends BaseWidgetState<CommonWebsitePage> {
 
   _getDataFromDb() async {
     List datas = await db.getTotalList();
-    if(datas.length>0){
-      datas.forEach((item){
+    if (datas.length > 0) {
+      datas.forEach((item) {
         DataListBean dataListBean = DataListBean.fromMap(item);
         _datas.add(dataListBean);
       });
       setState(() {
 
       });
-    }else{
+    } else {
       showloading();
     }
   }
@@ -100,7 +99,7 @@ class CommonWebsitePageState extends BaseWidgetState<CommonWebsitePage> {
               mainAxisSpacing: 15,
               crossAxisSpacing: 15,
               childAspectRatio: 1.333 //
-              ),
+          ),
           controller: _scrollController,
           itemCount: _datas.length,
           itemBuilder: _renderItem),
@@ -163,12 +162,12 @@ class CommonWebsitePageState extends BaseWidgetState<CommonWebsitePage> {
       floatingActionButton: !showToTopBtn
           ? null
           : FloatingActionButton(
-              child: Icon(Icons.arrow_upward),
-              onPressed: () {
-                //返回到顶部时执行动画
-                _scrollController.animateTo(.0,
-                    duration: Duration(milliseconds: 200), curve: Curves.ease);
-              }),
+          child: Icon(Icons.arrow_upward),
+          onPressed: () {
+            //返回到顶部时执行动画
+            _scrollController.animateTo(.0,
+                duration: Duration(milliseconds: 200), curve: Curves.ease);
+          }),
     );
   }
 
