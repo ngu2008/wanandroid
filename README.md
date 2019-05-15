@@ -141,6 +141,6 @@
 - [sqflite](https://pub.flutter-io.cn/packages/sqflite)
 - [path_provider ](https://pub.flutter-io.cn/packages/path_provider#-installing-tab-)
 
-## 我的微信公众号
+## 欢迎关注我的微信公众号
 
-  ![](wechat.jpg)
+  ![](screenshot/wechat.jpg)
