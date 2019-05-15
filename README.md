@@ -140,3 +140,7 @@
 - [photo_view](https://pub.flutter-io.cn/packages/photo_view)
 - [sqflite](https://pub.flutter-io.cn/packages/sqflite)
 - [path_provider ](https://pub.flutter-io.cn/packages/path_provider#-installing-tab-)
+
+## 我的微信公众号
+
+  ![](wechat.jpg)
