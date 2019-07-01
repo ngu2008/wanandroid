@@ -45,5 +45,4 @@ class _LoadingState extends State<LoadingPage> {
       ),
     );
   }
-
 }

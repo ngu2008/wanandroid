@@ -33,8 +33,8 @@ class MyApp extends StatefulWidget {
 }
 
 class MyAppState extends State<MyApp> {
-  Color themeColor = ThemeUtils.currentColorTheme;
 
+  Color themeColor = ThemeUtils.currentColorTheme;
   @override
   void initState() {
     super.initState();

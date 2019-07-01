@@ -7,7 +7,6 @@ import 'package:wanandroid_ngu/ui/project/project.dart';
 import 'package:wanandroid_ngu/ui/publicc/publicc.dart';
 import 'package:wanandroid_ngu/ui/search/search.dart';
 
-
 //应用页面使用有状态Widget
 class App extends StatefulWidget {
   App({Key key}) : super(key: key);
